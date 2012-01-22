@@ -11,7 +11,8 @@ def is_unique_via_set(s):
         seen.add(x)
     return True
 
-# Gross. Variant of "Check every char of the string with every other char of the string for duplicate occurrences."
+# Gross. Don't ever do this in python.
+# Variant of solution "Check every char of the string with every other char of the string for duplicate occurrences."
 def is_unique_via_substr(s):
     for n in xrange(len(s)):
         c = s[n]
