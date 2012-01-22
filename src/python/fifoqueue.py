@@ -37,7 +37,7 @@ class FifoQueueFixedSize(object):
         return len(self._queue)
 
 
-    
+
 #################################################
 # Tests
 
