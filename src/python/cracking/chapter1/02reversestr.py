@@ -31,7 +31,7 @@ def reverse_no_cheating_in_place(s):
         swap = s[si]
         s[si] = s[ri]
         s[ri] = swap
-    return ''.join(s)
+    return ''.join(s) # Convert back to string.
 
 #################################
 # Tests
