@@ -1,5 +1,6 @@
 """
-Simple FIFO queue and a fixed size FIFO queue with add(), remove(), and count() *methods* (no properties).
+Create a simple FIFO queue, and separately a fixed size FIFO queue, each with add(), remove(), and count() *methods* (no properties).
+
 Clearly unnecessary in Python.
 """
 
