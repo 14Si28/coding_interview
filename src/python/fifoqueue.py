@@ -37,6 +37,10 @@ class FifoQueueFixedSize(object):
         return len(self._queue)
 
 
+    
+#################################################
+# Tests
+
 def _test_remove_when_empty(q):
     fail = False
     try:
