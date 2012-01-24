@@ -35,7 +35,7 @@ def _check_spaces_func(func, s, expected):
     actual = func(s)
     if actual != expected:
         raise AssertionError(
-            'FAIL: Expected: {}   Actual: {}   Input a: {}  Input b: {}'.format(expected, actual, s))
+            'FAIL: Expected: {}   Actual: {}   Input: {}'.format(expected, actual, s))
 
 def _test_spaces_all(func):
     _check_spaces_func(func, 'hello world', 'hello%20world')
