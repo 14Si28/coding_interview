@@ -12,7 +12,11 @@ def rotate_cheat(pixel_matrix):
     import numpy
     return numpy.rot90(pixel_matrix)
 
-def rotate_naive(pixel_matrix):
+def rotate_copy(pixel_matrix):
+    """
+    Rotate 90 degrees counter-clockwise by creating a copy.
+    pixel_matrix: array of arrays, each int element represents a pixel. [ [0,0,1], [1,1,0] ]
+    """
     if not pixel_matrix:
         return []
     old_width = len(pixel_matrix[0])
@@ -25,6 +29,13 @@ def rotate_naive(pixel_matrix):
                 raise Exception('Invalid row width. Expected: {}  Actual: {}'.format(old_width, len(arr)))
             new_row.append(arr[old_col])
     return rotated
+
+def rotate_in_place(pixel_matrix):
+    """
+    In place rotation, by swapping outermost edges to innermost (concentric).
+    """
+    # TODO
+    pass
 
 
 #################################
@@ -52,7 +63,7 @@ def _test_rotate_all(func):
 
 if __name__ == '__main__':
     _test_rotate_all(rotate_cheat)
-    _test_rotate_all(rotate_naive)
+    _test_rotate_all(rotate_copy)
     print 'SUCCESS'
 
 
