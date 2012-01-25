@@ -13,8 +13,18 @@ def rotate_cheat(pixel_matrix):
     return numpy.rot90(pixel_matrix)
 
 def rotate_naive(pixel_matrix):
-    pass
-
+    if not pixel_matrix:
+        return []
+    old_width = len(pixel_matrix[0])
+    rotated = []
+    for old_col in xrange(old_width-1, -1, -1): # width-1 to 0
+        rotated.append([])
+        new_row = rotated[-1]
+        for arr in pixel_matrix:
+            if len(arr) != old_width:
+                raise Exception('Invalid row width. Expected: {}  Actual: {}'.format(old_width, len(arr)))
+            new_row.append(arr[old_col])
+    return rotated
 
 
 #################################
@@ -42,6 +52,7 @@ def _test_rotate_all(func):
 
 if __name__ == '__main__':
     _test_rotate_all(rotate_cheat)
+    _test_rotate_all(rotate_naive)
     print 'SUCCESS'
 
 
