@@ -3,6 +3,12 @@ Design an algorithm and write code to remove the duplicate characters in a strin
 NOTE: One or two additional variables are fine. An extra copy of the array is not.
 """
 
+def remove_dupes_cheat(s):
+    """
+    Removes duplicates quickly but fails to preserve ordering.
+    """
+    return ''.join(set(s))
+
 # O(n^2)
 def remove_dupes_no_extra_buffer(s):
     s = [c for c in s] # Strings in python are immutable. Convert it to an array and pretend.
@@ -49,4 +55,5 @@ def _test_remove_dupes_all(func):
 if __name__ == '__main__':
     _test_remove_dupes_all(remove_dupes_no_extra_buffer)
     _test_remove_dupes_all(remove_dupes_via_set)
+    _check_str_func(remove_dupes_cheat, 'abb', 'ab')
     print 'SUCCESS'
