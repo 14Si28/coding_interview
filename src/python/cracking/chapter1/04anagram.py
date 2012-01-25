@@ -6,16 +6,13 @@ def is_anagram_cheat(a, b):
     """
     Convert strings to lists, sort them, convert back, compare. The conversions make this ugly.
     """
-    if a == b:
+    if a == b: # it's not an anagram if it's identical
         return False
-    if len(a) != len(b):
-        return False
-    a_sorted = sorted([c for c in a])
-    b_sorted = sorted([c for c in b])
-    return ''.join(a_sorted) == ''.join(b_sorted)
+    return sorted(a) == sorted(b)
 
 def is_anagram_naive(a, b):
     """
+    Illustrate an actual algorithm.
     Naive anagram check. O(n), wasted storage for counts, worst case 3x iterations.
     """
     if a == b:
