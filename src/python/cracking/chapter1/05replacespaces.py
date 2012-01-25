@@ -5,7 +5,7 @@ Write a method to replace all spaces in a string with %20.
 def replace_spaces_cheat(s):
     return s.replace(' ', '%20')
 
-# Don't ever do this in python.
+# Illustrates an algorithm. Don't ever do this in python.
 def replace_spaces_array(s):
     # If you MUST use primitive arrays and indexes, and cannot use array's insert...
     orig_arr  = [c for c in s]

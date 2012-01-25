@@ -7,14 +7,14 @@ Variant: don't "cheat."
 def reverse(s):
     return s[::-1]
 
-# Don't ever do this in python.
+# Illustrates an algorithm. Don't ever do this in python.
 def reverse_no_cheating(s):
     r = []
     for x in s:
         r.insert(0, x)
     return ''.join(r)
 
-# Don't ever do this in python.
+# Illustrates an algorithm. Don't ever do this in python.
 def reverse_no_cheating_prealloc_array(s):
     import array # Import should be at top. Not following PEP-8 here.
     r = array.array('c', (' ',)*len(s)) # 'c: char array, ('',) tuple for init each elem, *len(s): make it the same size
@@ -23,7 +23,7 @@ def reverse_no_cheating_prealloc_array(s):
         r[ri] = s[si]
     return ''.join(r)
 
-# Don't ever do this in python.
+# Illustrates an algorithm. Don't ever do this in python.
 def reverse_no_cheating_in_place(s):
     s = [c for c in s] # Strings in python are immutable. Convert it to an array and pretend we're still doing it "in place".
     for si in xrange(len(s)/2):

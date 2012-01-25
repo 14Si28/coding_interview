@@ -12,6 +12,7 @@ def rotate_cheat(pixel_matrix):
     import numpy
     return numpy.rot90(pixel_matrix)
 
+# Illustrates an algorithm.
 def rotate_copy(pixel_matrix):
     """
     Rotate 90 degrees counter-clockwise by creating a copy.

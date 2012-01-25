@@ -9,6 +9,7 @@ def remove_dupes_cheat(s):
     """
     return ''.join(set(s))
 
+# Illustrates an algorithm.
 # O(n^2)
 def remove_dupes_no_extra_buffer(s):
     s = [c for c in s] # Strings in python are immutable. Convert it to an array and pretend.
