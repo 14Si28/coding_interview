@@ -8,8 +8,8 @@ def zero_matrix(matrix):
     """
     if not matrix:
         return []
-    to_zero_x = []
-    to_zero_y = []
+    to_zero_x = set()
+    to_zero_y = set()
     width = len(matrix[0])
     height = len(matrix)
     for y in xrange(height):
@@ -20,8 +20,8 @@ def zero_matrix(matrix):
                 # Track rows/cols to zero but don't zero yet.
                 # If we zero'd rows/cols now, we'd detect the new zeros later,
                 # and subsequent rows/cols would be zero'd incorrectly.
-                to_zero_x.append(x)
-                to_zero_y.append(y)
+                to_zero_x.add(x)
+                to_zero_y.add(y)
 
     for tx in to_zero_x:
         for y in xrange(height):
