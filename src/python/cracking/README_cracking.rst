@@ -1,4 +1,7 @@
-Problems from:
+Attribution
+===============
+
+Problems quoted from:
 Cracking the Coding Interview: 150 Programming Questions and Solutions by Gayle Laakmann McDowell
 http://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/098478280X
 
