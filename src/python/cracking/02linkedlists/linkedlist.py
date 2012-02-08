@@ -2,8 +2,8 @@
 A linked list example implementation. In normal python you would just use the list builtin.
 """
 
-# Illustration. Don't do this in python. Normally just use built in lists.
-class SillyNode(object):
+# Illustration. Don't do this in python.
+class LinkedListNode(object):
     def __init__(self, data, previous=None, next=None):
         self.previous = previous
         self.next = next
@@ -23,8 +23,8 @@ class SillyNode(object):
         return '{}'.format(self.data)
 
 
-# Illustration. Don't do this in python. Normally just use built in lists.
-class SillyList(object):
+# Illustration. Don't do this in python.
+class LinkedList(object):
     def __init__(self, head):
         """
         head: SillyNode

@@ -38,16 +38,16 @@ def remove_duplicates_no_temp(nodes):
                 break
     return nodes
 
-def remove_duplicates_sillylist(silly_list):
+def remove_duplicates_linkedlist(the_list):
     """
     Remove duplicates in place by repeatedly scanning the list for duplicates. Duplicates. Yeah.
 
-    silly_list: a SillyList of SillyNodes
+    the_list: a LinkedList of LinkedListNodes
     """
-    if not silly_list.head:
+    if not the_list.head:
         return
-    current = silly_list.head.next
-    previous = silly_list.head
+    current = the_list.head.next
+    previous = the_list.head
     while current:
         scanner = current.next
         current_removed = False
@@ -75,21 +75,19 @@ def _check_func(func, input_nodes, expected):
         raise AssertionError(
             'FAIL: Expected: {}   Actual: {}   Input: {}'.format(expected, actual, input_nodes))
 
-def _test_silly_list():
-    import sillylist # Localize this import since it's only for this test. (Violating PEP-8.)
-    test_list = sillylist.SillyList(sillylist.SillyNode(0))
-    test_list.append(sillylist.SillyNode(1))
-    test_list.append(sillylist.SillyNode(1))
-    test_list.append(sillylist.SillyNode(2))
-    test_list.append(sillylist.SillyNode(3))
-    test_list.append(sillylist.SillyNode(3))
-    test_list.append(sillylist.SillyNode(1))
-#    print silly_list
+def _test_linked_list():
+    import linkedlist # Localize this import since it's only for this test. (Violating PEP-8.)
+    test_list = linkedlist.LinkedList(linkedlist.LinkedListNode(0))
+    test_list.append(linkedlist.LinkedListNode(1))
+    test_list.append(linkedlist.LinkedListNode(1))
+    test_list.append(linkedlist.LinkedListNode(2))
+    test_list.append(linkedlist.LinkedListNode(3))
+    test_list.append(linkedlist.LinkedListNode(3))
+    test_list.append(linkedlist.LinkedListNode(1))
     assert test_list.__str__() == '[0,1,1,2,3,3,1]'
-    remove_duplicates_sillylist(test_list)
-#    print silly_list
+    remove_duplicates_linkedlist(test_list)
     assert test_list.__str__() == '[0,2,3,1]'
-    print 'PASS {}'.format(remove_duplicates_sillylist)
+    print 'PASS {}'.format(remove_duplicates_linkedlist)
 
 
 def _test_all(func):
@@ -105,7 +103,7 @@ def _test_all(func):
 if __name__ == '__main__':
     _test_all(remove_duplicates)
     _test_all(remove_duplicates_no_temp)
-    _test_silly_list()
+    _test_linked_list()
     print 'SUCCESS'
 
 
