@@ -77,16 +77,10 @@ def _check_func(func, input_nodes, expected):
 
 def _test_linked_list():
     import linkedlist # Localize this import since it's only for this test. (Violating PEP-8.)
-    test_list = linkedlist.LinkedList(linkedlist.LinkedListNode(0))
-    test_list.append(linkedlist.LinkedListNode(1))
-    test_list.append(linkedlist.LinkedListNode(1))
-    test_list.append(linkedlist.LinkedListNode(2))
-    test_list.append(linkedlist.LinkedListNode(3))
-    test_list.append(linkedlist.LinkedListNode(3))
-    test_list.append(linkedlist.LinkedListNode(1))
-    assert test_list.__str__() == '[0,1,1,2,3,3,1]'
+    test_list = linkedlist.create_linkedlist([0,1,1,2,3,3,1])
+    assert str(test_list) == '[0, 1, 1, 2, 3, 3, 1]'
     remove_duplicates_linkedlist(test_list)
-    assert test_list.__str__() == '[0,2,3,1]'
+    assert str(test_list) == '[0, 2, 3, 1]'
     print 'PASS {}'.format(remove_duplicates_linkedlist)
 
 

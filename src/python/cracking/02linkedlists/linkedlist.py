@@ -10,9 +10,9 @@ class LinkedListNode(object):
         self.data = data
 
     def __cmp__(self, other):
-        if not other or not other.data:
+        if other == None: # Don't use `if not other`, since then it won't work for 0, [], etc.
             return 1 # self > other  (other=None is "smaller")
-        if not self.data:
+        if self.data == None:
             return -1 # self < other
         return self.data.__cmp__(other.data)
 
@@ -55,7 +55,47 @@ class LinkedList(object):
         s = '['
         for x in self.traverse():
             if len(s) > 1:
-                s += ','
+                s += ', '
             s += '{}'.format(x)
         s += ']'
         return s
+
+
+def create_linkedlist(pylist):
+    """
+    Create a LinkeList of LinkedListNodes from a standard python list.
+    """
+    new_list = LinkedList(LinkedListNode(pylist[0]))
+    for x in pylist[1:]:
+        new_list.append(LinkedListNode(x))
+    return new_list
+
+
+
+
+#################################
+# Tests
+#
+
+def _test_create():
+    input = [0, 1, 1, 2, 3, 3, 1]
+    test_list = create_linkedlist(input)
+    assert str(test_list) == str(input)
+
+def _test_equals():
+    a = LinkedListNode(0)
+    b = LinkedListNode(0)
+    c = LinkedListNode(1)
+    assert a == b
+    assert a != c
+    assert b != c
+    assert str(a) == str(b)
+    assert str(a) != str(c)
+
+def _test_all():
+    _test_create()
+    _test_equals()
+
+
+if __name__ == '__main__':
+    _test_all()
