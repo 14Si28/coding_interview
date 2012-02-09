@@ -39,9 +39,9 @@ class LinkedList(object):
         self.last.next = node
         self.last = node
 
-    def traverse(self):
+    def traverse_data(self):
         """
-        Create an iterator over the list of nodes.
+        Create an iterator over the list's data.
         """
         if not self.head:
             yield None
@@ -51,9 +51,21 @@ class LinkedList(object):
                 yield current.data
                 current = current.next
 
+    def traverse_nodes(self):
+        """
+        Create an iterator over the list nodes.
+        """
+        if not self.head:
+            yield None
+        else:
+            current = self.head
+            while current:
+                yield current
+                current = current.next
+
     def __str__(self):
         s = '['
-        for x in self.traverse():
+        for x in self.traverse_data():
             if len(s) > 1:
                 s += ', '
             s += '{}'.format(x)
@@ -65,6 +77,8 @@ def create_linkedlist(pylist):
     """
     Create a LinkeList of LinkedListNodes from a standard python list.
     """
+    if not pylist:
+        raise ValueError('Cannot create empty list.')
     new_list = LinkedList(LinkedListNode(pylist[0]))
     for x in pylist[1:]:
         new_list.append(LinkedListNode(x))
