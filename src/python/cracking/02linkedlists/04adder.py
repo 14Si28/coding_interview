@@ -3,6 +3,8 @@ You have two numbers represented by a linked list, where each node contains a si
 EXAMPLE
 Input: (3 -> 1 -> 5) + (5 -> 9 -> 2)
 Output: 8 -> 0 -> 8
+
+Alternate solution: recursive impl.
 """
 
 import linkedlist
@@ -28,7 +30,7 @@ def _list_to_int(the_list):
 
 def _int_to_list(the_int):
     if not the_int:
-        result = [0]
+        return linkedlist.create_linkedlist([0])
     else:
         result = []
         remaining_int = the_int
