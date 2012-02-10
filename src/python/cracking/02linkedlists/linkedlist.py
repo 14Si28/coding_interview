@@ -63,6 +63,26 @@ class LinkedList(object):
                 yield current
                 current = current.next
 
+    def find_nodes(self, node_value, start_node=None):
+        """
+        returns: a generator over all nodes with node_value, or [] if none found.
+        """
+        if not start_node:
+            start_node = self.head
+
+        started = False
+        for node in self.traverse_nodes():
+            if node == start_node:
+                started = True
+            if started and node.data == node_value:
+                yield node
+
+    def find_node(self, node_value, start_node=None):
+        nodes = list(self.find_nodes(node_value, start_node=start_node))
+        if len(nodes) > 0:
+            return nodes[0]
+        return None
+
     def __str__(self):
         s = '['
         for x in self.traverse_data():
