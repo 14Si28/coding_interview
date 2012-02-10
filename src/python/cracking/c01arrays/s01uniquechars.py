@@ -45,8 +45,11 @@ def _test_is_unique_chars(func):
     _check_is_unique(func, 'a', True)
     _check_is_unique(func, 'aaaaaaaaaaa', False)
 
-if __name__ == '__main__':
+def _test_all():
     _test_is_unique_chars(is_unique_via_set)
     _test_is_unique_chars(is_unique_via_substr)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 

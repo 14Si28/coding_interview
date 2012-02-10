@@ -50,9 +50,12 @@ def _test_reverse_all(func):
     _test_reverse(func, 'abcd', 'dcba')
     _test_reverse(func, 'abcdefghi', 'ihgfedcba')
 
-if __name__ == '__main__':
+def _test_all():
     _test_reverse_all(reverse)
     _test_reverse_all(reverse_no_cheating)
     _test_reverse_all(reverse_no_cheating_prealloc_array)
     _test_reverse_all(reverse_no_cheating_in_place)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
