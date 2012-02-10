@@ -53,8 +53,11 @@ def _test_remove_dupes_all(func):
     _check_str_func(func, 'abcdabcd', 'abcd')
     _check_str_func(func, 'aaaa12345678907415690248723041893075354123', 'a1234567890')
 
-if __name__ == '__main__':
+def _test_all():
     _test_remove_dupes_all(remove_dupes_no_extra_buffer)
     _test_remove_dupes_all(remove_dupes_via_set)
     _check_str_func(remove_dupes_cheat, 'abb', 'ab')
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()

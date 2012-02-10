@@ -37,10 +37,12 @@ def _test_rotation_all(func):
     _check_rotation_func(func, 'waterbottle', 'erbottlewta', False)
     _check_rotation_func(func, 'waterbottle', 'aterbottlew', True)
 
-
-if __name__ == '__main__':
+def _test_all():
     _test_rotation_all(is_rotation)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 
 
 

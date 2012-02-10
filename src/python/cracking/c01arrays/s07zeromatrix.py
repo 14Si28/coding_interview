@@ -68,10 +68,12 @@ def _test_rotate_all(func):
 
     _check_zero_func(func, [[1,1,0], [1,1,1], [1,1,1]], [[0,0,0], [1,1,0], [1,1,0]])
 
-
-if __name__ == '__main__':
+def _test_all():
     _test_rotate_all(zero_matrix)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 
 
 

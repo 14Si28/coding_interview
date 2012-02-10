@@ -57,7 +57,7 @@ def _check_func(func, left, right, expected):
             'FAIL: Expected: {}   Actual: {}   Input left: {}  Input right: {}'.format(
                 expected_list, actual, left, right))
 
-def _test_all(func):
+def _test_add_cases(func):
     _check_func(func, [3, 1, 5], [5, 9, 2], [8, 0, 8])
     _check_func(func, [1, 2, 3], [4, 5, 6], [5, 7, 9])
     _check_func(func, [1], [1], [2])
@@ -67,9 +67,12 @@ def _test_all(func):
     _check_func(func, [0, 1], [2], [2, 1])
     _check_func(func, [0, 0, 1], [2], [2, 0, 1])
 
-if __name__ == '__main__':
-    _test_all(add_list_numbers)
+def _test_all():
+    _test_add_cases(add_list_numbers)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 
 
 

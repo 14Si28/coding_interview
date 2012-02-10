@@ -55,11 +55,13 @@ def _test_anagram_all(func):
     _check_anagram_func(func, 'basiparachromatin', 'marsipobranchiata', True)
     _check_anagram_func(func, 'undefinability', 'unidentifiably', True)
 
-
-if __name__ == '__main__':
+def _test_all():
     _test_anagram_all(is_anagram_naive)
     _test_anagram_all(is_anagram_cheat)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 
 
 

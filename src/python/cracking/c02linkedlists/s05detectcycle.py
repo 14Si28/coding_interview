@@ -75,15 +75,18 @@ def _test_cycle(func, pylist, start_val, end_val):
     end.next = start
     _check_func(func, the_list, start)
 
-def _test_all(func):
+def _test_cycle_cases(func):
     _test_cycle(func, [0, 1, 2, 3, 4, 5], 0, 3)
     _test_cycle(func, [0, 1, 2, 3, 4, 5], 1, 4)
     _test_cycle(func, [0, 1, 2, 3, 4, 5], 2, 5)
 
-if __name__ == '__main__':
-    _test_all(find_cycle_node)
-    _test_all(find_cycle_node_skip)
+def _test_all():
+    _test_cycle_cases(find_cycle_node)
+    _test_cycle_cases(find_cycle_node_skip)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 
 
 

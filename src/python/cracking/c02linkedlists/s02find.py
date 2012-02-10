@@ -56,7 +56,7 @@ def _create_linkedlist(pylist):
     assert str(test_list) == str(pylist)
     return test_list
 
-def _test_all(func):
+def _test_find_cases(func):
     _check_func(func, [0], 0, 0)
     _check_func(func, [0, 1], 0, 1)
     _check_func(func, [0, 1], 1, 0)
@@ -69,9 +69,12 @@ def _test_all(func):
     for x in xrange(len(nine_list)):
         _check_func_calc_expected(func, nine_list, x)
 
-if __name__ == '__main__':
-    _test_all(find)
+def _test_all():
+    _test_find_cases(find)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 
 
 

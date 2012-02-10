@@ -47,10 +47,13 @@ def _test_spaces_all(func):
     _check_spaces_func(func, '', '')
     _check_spaces_func(func, 'abc', 'abc')
 
-if __name__ == '__main__':
+def _test_all():
     _test_spaces_all(replace_spaces_cheat)
     _test_spaces_all(replace_spaces_array)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 
 
 

@@ -84,7 +84,7 @@ def _test_linked_list():
     print 'PASS {}'.format(remove_duplicates_linkedlist)
 
 
-def _test_all(func):
+def _test_remove_cases(func):
     _check_func(func, [], [])
     _check_func(func, [0], [0])
     _check_func(func, [0,1], [0,1])
@@ -94,10 +94,15 @@ def _test_all(func):
     #_check_func(func, [1,0,1,1], [1,0]) # Expected ordering depends on whether func removes former or latter duplicates.
     print 'PASS {}'.format(func)
 
-if __name__ == '__main__':
-    _test_all(remove_duplicates)
-    _test_all(remove_duplicates_no_temp)
+def _test_all():
+    _test_remove_cases(remove_duplicates)
+    _test_remove_cases(remove_duplicates_no_temp)
     _test_linked_list()
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
+
+
 
 

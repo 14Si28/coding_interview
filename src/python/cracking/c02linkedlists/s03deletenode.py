@@ -21,12 +21,15 @@ def delete_node(node):
 # Tests
 #
 
-if __name__ == '__main__':
+def _test_all():
     test_list = linkedlist.create_linkedlist([0, 1, 2])
     node = test_list.head.next
     assert node.data == 1
     delete_node(node)
     assert str(test_list) == '[0, 2]'
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 
 

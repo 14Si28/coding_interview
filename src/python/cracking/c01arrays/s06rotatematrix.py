@@ -62,10 +62,13 @@ def _test_rotate_all(func):
     _check_rotate_func(func, [[0,1], [7,8]], [[1,8], [0, 7]])
     _check_rotate_func(func, [[0,1,2], [7,8,9]], [[2,9], [1,8], [0,7]])
 
-if __name__ == '__main__':
+def _test_all():
     _test_rotate_all(rotate_cheat)
     _test_rotate_all(rotate_copy)
     print 'SUCCESS'
+
+if __name__ == '__main__':
+    _test_all()
 
 
 
