@@ -17,3 +17,11 @@ Cracking
 
 The *cracking* directory has Python solutions for the book Cracking the Coding Interview by Gayle Laakmann McDowell.
 
+Running Python Tests
+=====================
+
+To run the python tests::
+    cd ./src/python
+    nosetests
+
+
