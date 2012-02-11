@@ -1,5 +1,4 @@
 import unittest
-# Ugly relative imports. These make it easy to run nosetests from the top of the repo, though. Normally, do not use relative imports.
 from cracking.c01arrays import s01uniquechars
 from cracking.c01arrays import s02reversestr
 from cracking.c01arrays import s03removedupes

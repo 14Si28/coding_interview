@@ -2,7 +2,7 @@
 Implement an algorithm to find the nth to last element of a singly linked list.
 """
 
-import linkedlist
+import linkedlist # Relative import makes it possible to run this script from any dir, but violates PEP-8.
 
 def find(the_list, nth_from_last):
     """
