@@ -1,3 +1,12 @@
+"""
+Simplified MVC examples.
+"""
+
+
+##
+# The Alpha MVC illustrates the canonical example where the controller references the model and view directly.
+##
+
 class AlphaView(object):
     def __init__(self, model):
         self._model = model
@@ -11,21 +20,14 @@ class AlphaView(object):
 
 class AlphaModel(object):
     def __init__(self, data_series):
-        """
-        data_series: must be iterable.
-        """
-        self._data = data_series
-        self._index = 0
+        self._cycle = Cycle(data_series)
 
     def service(self):
-        # Cycle through the data.
-        self._index += 1
-        if self._index >= len(self._data):
-            self._index = 0
+        self._cycle.next()
 
     @property
     def data(self):
-        return self._data[self._index]
+        return self._cycle.current
 
 class AlphaController(object):
     def __init__(self, model, view):
@@ -36,6 +38,30 @@ class AlphaController(object):
         self._model.service()
         self._view.update()
 
+class Cycle(object):
+    """
+    Cycle through data elements. Not part of MVC but underpins our model.
+    """
+    def __init__(self, data_series):
+        """
+        data_series: must implement __getitem__
+        """
+        self._data = data_series
+        self._index = 0
+
+    def next(self):
+        #
+        self._index += 1
+        if self._index >= len(self._data):
+            self._index = 0
+
+    @property
+    def current(self):
+        return self._data[self._index]
+
+##
+# The Beta MVC illustrates using an observer to decouple the controller from the model and view.
+##
 
 
 #################################
