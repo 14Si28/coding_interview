@@ -13,7 +13,12 @@ import sys
 import itertools
 import math
 
-def pascals_triangle_recursive1(height):
+def pascals_triangle1(height):
+	"""
+	Recursive impl.
+
+	returns: a pascal's triangle as a list of lists.
+	"""
 	def _create_triangle(height, previous_row, result):
 		if height <= 0:
 			return
@@ -35,8 +40,12 @@ def pascals_triangle_recursive1(height):
 	_create_triangle(height, [], result)
 	return result
 
-def pascals_triangle_recursive2(height):
-	# William Shield's solution: http://www.cforcoding.com/2012/01/interview-programming-problems-done.html
+def pascals_triangle2(height):
+	"""
+	Recursive impl. William Shield's solution: http://www.cforcoding.com/2012/01/interview-programming-problems-done.html
+
+	returns: a pascal's triangle as a list of lists.
+	"""
 	def _elem(row_index, col_index):
 		if col_index < 0 or col_index > row_index:
 			return 0
@@ -108,8 +117,8 @@ def _validate_func(func):
 		_validate_triangle(height, func(height))
 
 def _run_tests():
-	_validate_func(pascals_triangle_recursive1)
-	_validate_func(pascals_triangle_recursive2)
+	_validate_func(pascals_triangle1)
+	_validate_func(pascals_triangle2)
 	print 'SUCCESS All tests passed.'
 
 def main():
@@ -121,7 +130,7 @@ def main():
 	if height < 0:
 		_run_tests()
 	else:
-		for row in pascals_triangle_recursive1(height):
+		for row in pascals_triangle1(height):
 			print row
 
 if __name__ == '__main__':
