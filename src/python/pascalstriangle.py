@@ -13,29 +13,44 @@ import sys
 import itertools
 import math
 
-def _triangle_recursive(height, previous_row, result):
-	if height <= 0:
-		return
+def pascals_triangle_recursive1(height):
+	def _create_triangle(height, previous_row, result):
+		if height <= 0:
+			return
 
-	curr_row = [1]
-	if previous_row:
-		prev_col = 0
-		while prev_col+1 < len(previous_row):
-			elem = previous_row[prev_col] + previous_row[prev_col+1]
-			curr_row.append(elem)
-			prev_col += 1
-		
-		curr_row.append(1)
+		curr_row = [1]
+		if previous_row:
+			prev_col = 0
+			while prev_col+1 < len(previous_row):
+				elem = previous_row[prev_col] + previous_row[prev_col+1]
+				curr_row.append(elem)
+				prev_col += 1
+			
+			curr_row.append(1)
 
-	result.append(curr_row)
-	_triangle_recursive(height-1, curr_row, result)
+		result.append(curr_row)
+		_create_triangle(height-1, curr_row, result)
 
-def pascals_triangle_recursive(height):
 	result = []
-	_triangle_recursive(height, [], result)
+	_create_triangle(height, [], result)
 	return result
 
-
+def pascals_triangle_recursive2(height):
+	# William Shield's solution: http://www.cforcoding.com/2012/01/interview-programming-problems-done.html
+	def _elem(row_index, col_index):
+		if col_index < 0 or col_index > row_index:
+			return 0
+		if col_index == 0 or col_index == row_index:
+			return 1
+		return _elem(row_index-1, col_index-1) + _elem(row_index-1, col_index)
+ 
+	def _row(row_index):
+		return [_elem(row_index, x) for x in xrange(row_index+1)]
+ 
+ 	result = []
+	for i in xrange(height):
+		result.append(_row(i))
+	return result
 
 
 ############################################
@@ -76,14 +91,14 @@ def _pascals_element(row, col):
 def _validate_row(row_index, row_values):
 	assert row_index + 1 == len(row_values)
 
-	for col in xrange(0, len(row_values)):
+	for col in xrange(len(row_values)):
 		expected = _pascals_element(row_index, col)
 		assert expected == row_values[col]
 
 def _validate_triangle(height, triangle_rows):
 	assert height == len(triangle_rows)
 	print triangle_rows
-	for index in xrange(0, len(triangle_rows)):
+	for index in xrange(len(triangle_rows)):
 		_validate_row(index, triangle_rows[index])
 
 def _validate_func(func):
@@ -93,7 +108,8 @@ def _validate_func(func):
 		_validate_triangle(height, func(height))
 
 def _run_tests():
-	_validate_func(pascals_triangle_recursive)	
+	_validate_func(pascals_triangle_recursive1)
+	_validate_func(pascals_triangle_recursive2)
 	print 'SUCCESS All tests passed.'
 
 def main():
@@ -105,7 +121,7 @@ def main():
 	if height < 0:
 		_run_tests()
 	else:
-		for row in pascals_triangle_recursive(height):
+		for row in pascals_triangle_recursive1(height):
 			print row
 
 if __name__ == '__main__':
