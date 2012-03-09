@@ -82,6 +82,7 @@ def pascals_triangle3(height):
 		rows.append(values)
 	return rows
 
+
 ############################################
 # Tests 
 #
