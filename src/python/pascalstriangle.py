@@ -11,6 +11,7 @@ Generate Pascal's triangle.
 """
 import sys
 import itertools
+import math
 
 def _triangle_recursive(height, previous_row, result):
 	if height <= 0:
@@ -37,8 +38,6 @@ def pascals_triangle_recursive(height):
 
 
 
-
-
 ############################################
 # Tests 
 #
@@ -56,14 +55,45 @@ EXPECTED_VALUES = [
 	[1, 9, 36, 84, 126, 126, 84, 36, 9, 1],
 ]
 
+MAX_HEIGHT = 16
+
 def _hard_coded_validation(func):
 	actual_triangle = func(len(EXPECTED_VALUES))
 	for expected, actual in itertools.izip(EXPECTED_VALUES, actual_triangle):
 		assert expected == actual
 	assert len(EXPECTED_VALUES) == len(actual_triangle)
 
+def _pascals_element(row, col):
+	"""
+	row: 0 based index of the pascal's triangle row
+	col: 0 based index of the element within a row
+
+	returns: the value of the specifed element in the row
+	"""
+	# n! / ( r! * (n - r)! )    where n is row, r is element w/in the row
+	return math.factorial(row) / ( math.factorial(col) * math.factorial(row - col) )
+
+def _validate_row(row_index, row_values):
+	assert row_index + 1 == len(row_values)
+
+	for col in xrange(0, len(row_values)):
+		expected = _pascals_element(row_index, col)
+		assert expected == row_values[col]
+
+def _validate_triangle(height, triangle_rows):
+	assert height == len(triangle_rows)
+	print triangle_rows
+	for index in xrange(0, len(triangle_rows)):
+		_validate_row(index, triangle_rows[index])
+
+def _validate_func(func):
+	_hard_coded_validation(func)
+
+	for height in xrange(1, MAX_HEIGHT+1):
+		_validate_triangle(height, func(height))
+
 def _run_tests():
-	_hard_coded_validation(pascals_triangle_recursive)
+	_validate_func(pascals_triangle_recursive)	
 	print 'SUCCESS All tests passed.'
 
 def main():
