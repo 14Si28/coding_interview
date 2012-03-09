@@ -15,7 +15,7 @@ import math
 
 def pascals_triangle1(height):
 	"""
-	Recursive impl.
+	Recursive impl. This one's naive and not pythonic (note the use of len, index, and a result accumulator param). It's also a bad mix of iterative and recursive.
 
 	returns: a pascal's triangle as a list of lists.
 	"""
@@ -23,10 +23,12 @@ def pascals_triangle1(height):
 		if height <= 0:
 			return
 
+		# Rows always start with 1
 		curr_row = [1]
-		if previous_row:
+		if previous_row: # previous_row is empty for the first computed row 
 			prev_col = 0
 			while prev_col+1 < len(previous_row):
+				# The next element is the sum of the 2 adjacent elements in the  previous row.
 				elem = previous_row[prev_col] + previous_row[prev_col+1]
 				curr_row.append(elem)
 				prev_col += 1
@@ -42,7 +44,8 @@ def pascals_triangle1(height):
 
 def pascals_triangle2(height):
 	"""
-	Recursive impl. William Shield's solution: http://www.cforcoding.com/2012/01/interview-programming-problems-done.html
+	Recursive impl. See William Shield's post: http://www.cforcoding.com/2012/01/interview-programming-problems-done.html
+	This one's inefficient.
 
 	returns: a pascal's triangle as a list of lists.
 	"""
@@ -61,6 +64,23 @@ def pascals_triangle2(height):
 		result.append(_row(i))
 	return result
 
+def pascals_triangle3(height):
+	"""
+	Iterative impl. Compact and pythonic.
+
+	returns: a pascal's triangle as a list of lists.
+	"""
+	if height < 1:
+		return []
+	rows = [[1]]
+	for row in xrange(1, height):
+		values = [1]
+		prev = rows[-1]
+		for index in xrange(1, row):
+			values.append(prev[index-1] + prev[index])
+		values.append(1)
+		rows.append(values)
+	return rows
 
 ############################################
 # Tests 
@@ -119,6 +139,7 @@ def _validate_func(func):
 def _run_tests():
 	_validate_func(pascals_triangle1)
 	_validate_func(pascals_triangle2)
+	_validate_func(pascals_triangle3)
 	print 'SUCCESS All tests passed.'
 
 def main():
