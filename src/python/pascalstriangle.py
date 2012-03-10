@@ -73,13 +73,15 @@ def pascals_triangle3(height):
     if height < 1:
         return []
     rows = [[1]]
-    for row in xrange(1, height):
-        values = [1]
-        prev = rows[-1]
-        for index in xrange(1, row):
-            values.append(prev[index-1] + prev[index])
-        values.append(1)
-        rows.append(values)
+    for row_num in xrange(1, height):
+        cells = [1]
+        prev_row = rows[-1]
+        for col_num in xrange(0, len(prev_row)-1):
+            cells.append(prev_row[col_num] + prev_row[col_num+1])
+        
+        cells.append(1)
+        rows.append(cells)
+
     return rows
 
 def pascals_triangle4(height):
@@ -104,6 +106,8 @@ def pascals_triangle4(height):
         t.append(pr)
 
     return t
+
+
 
 ############################################
 # Tests 
