@@ -82,6 +82,28 @@ def pascals_triangle3(height):
         rows.append(values)
     return rows
 
+def pascals_triangle4(height):
+    """
+    Another iterative impl, by teejae.
+    """
+    def _row(prev_row):
+        r = [1]
+        if not prev_row:
+            return r
+        for i in xrange(len(prev_row)-1):
+            r.append(prev_row[i] + prev_row[i+1])
+
+        r.append(1)
+
+        return r
+
+    t = []
+    pr = None
+    for i in xrange(height):
+        pr = _row(prev_row=pr)
+        t.append(pr)
+
+    return t
 
 ############################################
 # Tests 
@@ -141,6 +163,7 @@ def _run_tests():
     _validate_func(pascals_triangle1)
     _validate_func(pascals_triangle2)
     _validate_func(pascals_triangle3)
+    _validate_func(pascals_triangle4)
     print 'SUCCESS All tests passed.'
 
 def main():
