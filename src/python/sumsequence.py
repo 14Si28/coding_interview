@@ -9,6 +9,11 @@ from subsequence 1,2,5
 """
 
 def sumsequence(numbers):
+    """
+    O(n)
+    numbers: list of integers
+    returns: largest sum of any subsequence in the list of numbers
+    """
     summer = list(numbers)
     min_sum = 0
     max_sum = 0
