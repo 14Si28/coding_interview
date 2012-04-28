@@ -9,6 +9,17 @@ from subsequence 1,2,5
 """
 
 def sumsequence(numbers):
+    min_sum = 0
+    max_sum = 0
+    for ind in xrange(len(numbers)):
+        min_sum += numbers[ind]
+        if max_sum < min_sum:
+            max_sum = min_sum
+        elif min_sum < 0:
+            min_sum = 0
+    return max_sum
+
+def sumsequence2(numbers):
     """
     O(n)
     numbers: list of integers
