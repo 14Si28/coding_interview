@@ -15,8 +15,8 @@ def sumsequence(numbers):
         min_sum += numbers[ind]
         if max_sum < min_sum:
             max_sum = min_sum
-        elif min_sum < 0:
-            min_sum = 0
+        # elif min_sum < 0:
+        #     min_sum = 0
     return max_sum
 
 def sumsequence2(numbers):
