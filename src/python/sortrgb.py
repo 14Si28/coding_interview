@@ -73,11 +73,15 @@ def sort_rgb_dutch(rgb_values):
     q = len(rgb_values) - 1
     i = 0
     while i <= q:
+        _visualize_dutch(i, p, q, rgb_values)
+
         if rgb_values[i] == 'r': # first value
+            print 'i <==> p   {}  <==> {}'.format(rgb_values[i], rgb_values[p])
             rgb_values[i], rgb_values[p] = rgb_values[p], rgb_values[i]
             p += 1
             i += 1
         elif rgb_values[i] == 'b': # middle value
+            print 'i <==> q   {}  <==> {}'.format(rgb_values[i], rgb_values[q])
             rgb_values[i], rgb_values[q] = rgb_values[q], rgb_values[i]
             q -= 1
         else:
@@ -85,6 +89,16 @@ def sort_rgb_dutch(rgb_values):
 
     return ''.join(rgb_values) # Convert from array back to string
 
+def _visualize_dutch(i, p, q, rgb_values):
+    print ''.join(rgb_values)
+    def _print_var(w, c):
+        if w > 0:
+            print ' '*(w-1),
+        print c    
+
+    _print_var(i, 'i')
+    _print_var(p, 'p')
+    _print_var(q, 'q')
 
 def test_sort(sort_func, expected, input):
     actual = sort_func(input)
