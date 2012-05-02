@@ -1,6 +1,9 @@
 """
 Sorting exercise as an interview question, as seen in the wild. 
 
+This is a variant of the Dutch national flag problem (Dijkstra).
+
+
 /*
 * Suppose that we have three object types R, G, and B, and an array containing objects of
 * those types:
@@ -42,7 +45,8 @@ def compare_gt(left, right):
 def sort_rgb_bubble(rgb_values):
     """
     Bubble sort, one of the easiest to remember from university!
-    Worst case amortized time complexity O(n**2)
+    Worst case amortized time complexity O(n**2). 
+    The problem is for O(n) or better, so this is not the "right" answer. 
     """
     #rgb_values = list(rgb_values)  # uncomment to avoid modifying the original list
     end = len(rgb_values)
@@ -56,6 +60,9 @@ def sort_rgb_bubble(rgb_values):
         end -= 1
 
     return rgb_values
+
+# Other sorting algorithms have O(n log n) amortized worst case time complexity, 
+# which also do not meet the O(n) or better requirement.
 
 
 def test_sort(sort_func, expected, input):
