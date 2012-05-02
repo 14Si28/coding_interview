@@ -86,6 +86,7 @@ def sort_rgb_dutch(rgb_values):
             q -= 1
         else:
             i += 1
+        print '__________'
 
     return ''.join(rgb_values) # Convert from array back to string
 
