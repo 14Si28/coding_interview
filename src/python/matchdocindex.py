@@ -27,7 +27,7 @@ def find_matches(term_postings):
     term_postings: dict of lists of ints, { yummy: [0,1,2], ... }
     """
     keys = term_postings.keys()
-    # The first postings seeds or matches list.
+    # The first postings seeds the matches list.
     matches = term_postings[keys[0]]
     assert sorted(matches) == matches
     # For each subsequent term...
@@ -41,13 +41,13 @@ def find_matches(term_postings):
         nind = 0    
         cind = 0
         while cind < len(curr_postings) and nind < len(next_postings):
-            # Find a document index in the current postings that is >= to the index in the next postings.
+            # Find a document index in the current postings that is >= to the posting index in the next postings.
             while cind < len(curr_postings) and curr_postings[cind] < next_postings[nind]:
                 cind += 1
             # If the doc indexes are not a match, continue looking in the next postings.
             while nind < len(next_postings) and curr_postings[cind] != next_postings[nind]:
                 nind += 1
-            # If the doc indexes match, move to the next index in both postings lists.
+            # If the doc indexes match, move to the next posting index in both postings lists.
             if curr_postings[cind] == next_postings[nind]:
                 matches.append(curr_postings[cind])
                 cind += 1 
