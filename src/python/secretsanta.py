@@ -12,34 +12,56 @@ Then prove that it works correctly.
 import random
 
 def secretsanta(attendees):
-    if len(attendees) <= 1:
+    if not attendees or len(attendees) <= 1:
         return {}
 
-    # if len(attendees) == 2:
-    #     return { attendees[0]: attendees[1], attendees[1]: attendees[0] }
+    if len(attendees) == 2:
+        return { attendees[0]: attendees[1], attendees[1]: attendees[0] }
 
-    # if len(attendees) == 3:
-    #     return { attendees[0]: attendees[1], attendees[1]: attendees[2], attendees[2]: attendees[0] }
-
+    attendees = sorted(attendees)
     givers = list(attendees)
     recipients = list(attendees)
     assignments = {}
     while givers or recipients:
-        while True:
-            gindex = random.randint(0, len(givers)-1)
-            rindex = random.randint(0, len(recipients)-1)
-            give = givers.pop(gindex)
-            receive = recipients.pop(rindex)
-            if give != receive and (not receive in assignments or assignments[receive] != give):
-                assignments[give] = receive
-                break
+        assert len(recipients) == len(givers)
+        if len(givers) == 1:
+            k = assignments.iterkeys().next()
+            tmp = assignments[k]
+            assignments[k] = givers[0]
+            assignments[givers[0]] = tmp
+            break
+        elif len(givers) == 3 and givers == recipients:
+            assignments[givers[0]] = givers[1]
+            assignments[givers[1]] = givers[2]
+            assignments[givers[2]] = givers[0]
+            break
+        else:
+            limit = 1000
+            for x in xrange(limit):
+                gindex = random.randint(0, len(givers)-1)
+                rindex = random.randint(0, len(recipients)-1)
+                give = givers[gindex]
+                receive = recipients[rindex]
+                if give != receive and (not receive in assignments or assignments[receive] != give):
+                    assignments[give] = receive
+                    givers.pop(gindex)
+                    recipients.pop(rindex)
+                    break
+            if x >= limit-1:
+                print attendees
+                print givers
+                print recipients
+                raise Exception('Massive fail.')
 
+    assert len(assignments) == len(attendees)
     return assignments
 
-
 if __name__ == '__main__':
-    print secretsanta(['Alice', 'Bob', 'Carl', 'Doug', 'Elisa', 'Frank', 'George'])
-    print secretsanta(['Alice'])
-    print secretsanta(['Alice', 'Bob'])
-    print secretsanta(['Alice', 'Bob', 'Carl'])
+    for x in xrange(1000):
+        print secretsanta(['Alice', 'Bob', 'Carl', 'Doug'])
+        print secretsanta(['Alice', 'Bob', 'Carl', 'Doug', 'Elisa', 'Frank', 'George'])
+        print secretsanta([])
+        print secretsanta(['Alice'])
+        print secretsanta(['Alice', 'Bob'])
+        print secretsanta(['Alice', 'Bob', 'Carl'])
 
