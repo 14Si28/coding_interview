@@ -6,10 +6,14 @@ Any live cell with more than three live neighbours dies, as if by overcrowding.
 Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 """
 import time
+import random
 
 DIRECTIONS = [(-1,-1), (0,-1), (1,-1), (1,0), (1,1), (0,1), (-1, 1), (-1,0)]
 
 def game_loop(grid, max_turns=1000, turn_delay=1):
+    """
+    grid: array of arrays, a single value is grid[y][x]
+    """
     for count in xrange(max_turns):
         display(grid)
         grid, has_live = turn(grid)
@@ -70,9 +74,18 @@ def seed(grid, coords):
     for y,x in coords:
         grid[y][x] = 1
 
+def _random_coords(quantity, height, width):
+    coords = []
+    for x in xrange(quantity):
+        coords.append((random.randint(0, height-1), random.randint(0, width-1)))
+    return coords
+
 def test_all():
-    grid = create_grid(30,30)
-    seed(grid, [(10,10), (11,10), (12,10), (8,8), (25,23), (24,23), (3,3), (3,4), (4,3), (20,3), (20,4), (23,3), (23,4), (5,13), (6,13), (6, 14)])
+    height = 30
+    width = 30
+    grid = create_grid(height, width)
+    seed(grid, _random_coords(130, height, width))
+    #seed(grid, [(10,10), (11,10), (12,10), (8,8), (25,23), (24,23), (3,3), (3,4), (4,3), (20,3), (20,4), (23,3), (23,4), (5,13), (6,13), (6, 14)])
     game_loop(grid)
 
 if __name__ == '__main__':
