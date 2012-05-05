@@ -11,9 +11,20 @@ Then prove that it works correctly.
 
 import random
 
-def secretsanta_slow(attendees):
-    if not attendees or len(attendees) <= 1:
+def secretsanta_shuffle(attendees):
+    """
+    O(n)
+    In this solution, we randomize the list of attendees, 
+    then sequentially assign recipients using the next in the random list.
+    This is cheating but simple. It does not correctly prevent reciprocal assignment.
+    Python's shuffle uses the Fisher-Yates algo which is O(n).
+    """
+    if not attendees:
         return {}
+
+    if len(attendees) <= 1:
+        return { attendees[0]: attendees[0] }
+
     random.shuffle(attendees)
     assignments = {}
     for ind in xrange(len(attendees)-1):
@@ -24,9 +35,22 @@ def secretsanta_slow(attendees):
 
 
 def secretsanta_ugly(attendees):
-    if not attendees or len(attendees) <= 1:
+    """
+    O(n^2)
+    
+    This ugly solution tracks givers and recipients separately, 
+    randomly choosing pairs from the remaining list.
+    The ugliness lies in special casing a few of the assignments.
+
+    """
+    if not attendees:
         return {}
 
+    # A single attendee happily gives presents to his or herself.
+    if len(attendees) <= 1:
+        return { attendees[0]: attendees[0] }
+
+    # There's no way to prevent reciprocal assignment if there are only 2 attendees.
     if len(attendees) == 2:
         return { attendees[0]: attendees[1], attendees[1]: attendees[0] }
 
@@ -83,7 +107,14 @@ def _test_secretsanta(f, attendees):
     for x in xrange(1000):
         f(attendees)
 
-    print f(attendees)
+    # TODO Assertions!
+    actual = f(attendees)
+    if attendees:
+        print f
+        print attendees
+        print actual
+        print '________'
+        assert actual
 
 def _test_all(f):
     _test_secretsanta(f, ['Alice', 'Bob', 'Carl', 'Doug'])
@@ -94,6 +125,6 @@ def _test_all(f):
     _test_secretsanta(f, ['Alice', 'Bob', 'Carl'])
 
 if __name__ == '__main__':
-    _test_all(secretsanta_slow)
+    _test_all(secretsanta_shuffle)
     _test_all(secretsanta_ugly)
 
