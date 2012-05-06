@@ -7,10 +7,11 @@ Any dead cell with exactly three live neighbours becomes a live cell, as if by r
 """
 import time
 import random
+import sys
 
 DIRECTIONS = [(-1,-1), (0,-1), (1,-1), (1,0), (1,1), (0,1), (-1, 1), (-1,0)]
 
-def game_loop(grid, max_turns=1000, turn_delay=1):
+def game_loop(grid, max_turns=1000, turn_delay=0.8):
     """
     grid: array of arrays, a single value is grid[y][x]
     """
@@ -59,16 +60,17 @@ def create_grid(width, height):
     return grid
 
 def display(grid):
-    print '--v'
+    print '_'*len(grid[0]) + 'v'
+
     for y in xrange(len(grid)):
         for x in xrange(len(grid[y])):
             c = ' '
             if grid[y][x]:
                 c = '*'
-            print c,
+            sys.stdout.write(c)
 
         print
-    print '__^'
+    print '_'*len(grid[0]) + '^'
 
 def seed(grid, coords):
     for y,x in coords:
