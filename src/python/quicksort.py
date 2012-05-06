@@ -8,6 +8,9 @@ Note: in Python use sorted() instead (Timsort).
 import itertools
 
 def quicksort(values):
+    """
+    Average case O(n log n). Memory usage O(n).
+    """
     if len(values) <= 1:
         return values 
 
@@ -15,11 +18,12 @@ def quicksort(values):
 
     left = []
     right = []
-    pivot_ind = int(len(values) / 2)
+    # Naive pivot selection.
+    pivot_ind = int(len(values) / 2) 
     pivot = values[pivot_ind]
-    pivot_list = [pivot]
+    pivot_list = []
 
-    for ind in range(0, pivot_ind) + range(pivot_ind+1, len(values)):
+    for ind in range(0, len(values)):
         x = values[ind]
         if x < pivot:
             left.append(x)
@@ -41,6 +45,7 @@ def _test(func, input):
 def _test_all(func):
     _test(func, [1, 0])
     _test(func, [0, 3, 2, 1, 4, 5, 7, 6, 8])
+    _test(func, [0, 3, 2, 1, 4, 5, 5, 5, 5, 5, 7, 6, 8])
     _test(func, [0, 1])
     _test(func, [0, 1, 2])
     _test(func, [2, 1, 0])
