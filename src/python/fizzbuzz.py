@@ -18,8 +18,20 @@ def fizzbuzz():
         print ', ',
     print
 
+def fizzbuzz_alt():
+    for x in xrange(100):
+        if x % 3 == 0:
+            print 'fizz',
+        if x % 5 == 0:
+            print 'buzz',
+        if x % 3 != 0 and x % 5 != 0:
+            print x,
+        print ', ',
+    print    
+
 if __name__ == '__main__':
     fizzbuzz()
+    fizzbuzz_alt()
 
 
 
