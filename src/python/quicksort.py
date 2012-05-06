@@ -14,7 +14,7 @@ def quicksort(values):
     if len(values) <= 1:
         return values 
 
-    #print values
+    #print values # Uncomment this to see the divide and conquer progression.
 
     left = []
     right = []
