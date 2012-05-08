@@ -17,7 +17,7 @@ Return:
 This problem is a simplified presentation of word level inverted indexes. 
 You don't need to know inverted indexes or document classification to solve this problem.
 For more background, you can also search for:
-- Word postings 
+- Word postings and posting lists
 - Term frequency inverse document frequency tf*idf. 
 - Book: Introduction to Information Retrieval by Manning et al
 """
@@ -41,6 +41,9 @@ def find_matches(term_postings):
         nind = 0    
         cind = 0
         while cind < len(curr_postings) and nind < len(next_postings):
+            # The following sequential searches could be made faster using an adaptation of skip pointers.
+            # Our example data sets are small enough that it does not matter.
+
             # Find a document index in the current postings that is >= to the posting index in the next postings.
             while cind < len(curr_postings) and curr_postings[cind] < next_postings[nind]:
                 cind += 1
