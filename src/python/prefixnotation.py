@@ -44,6 +44,7 @@ def calculator(input):
             return left / right
         raise Exception('Invalid operator: {}'.format(operator))
 
+    # LIFO
     stack = []
     # Process items back to front.
     list.reverse(items)
