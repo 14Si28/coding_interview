@@ -23,11 +23,12 @@ def nthsmallest(numbers, n):
 		else:
 			for bindex in xrange(len(bucket)):
 				if num < bucket[bindex]:
+					# Evict the largest number
 					bucket.pop()
 					bucket.append(num)
+					# Ensure the largest number is always last
 					bucket.sort()
 					break
-		print bucket
 		index += 1
 
 	return bucket[-1]
@@ -43,6 +44,7 @@ def _test_all(func):
 	_test_one(func, [0,1,2,3,4,5,6,7,8], 2, 2)
 	_test_one(func, [0,1,2,3,4,5,6,7,8], 8, 8)
 	_test_one(func, [0,1,2,3,4,5,6,7,8], 1, 1)
+	_test_one(func, [0,1,2,3,4,5,6,7,8], 0, 0)
 	_test_one(func, [0,1], 1, 1)
 	_test_one(func, [0,1], 0, 0)
 	_test_one(func, [0], 0, 0)
