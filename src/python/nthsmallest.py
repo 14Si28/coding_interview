@@ -30,6 +30,7 @@ def nthsmallest(numbers, n):
 	if len(numbers) < n:
 		raise ValueError('n must be > len(numbers)')
 
+	unsorted = True
 	bucket = []
 	index = 0
 	while index < len(numbers):
@@ -37,15 +38,17 @@ def nthsmallest(numbers, n):
 		if len(bucket) <= n:
 			# Fill the bucket with n numbers first
 			bucket.append(num)
-			bucket.sort()
 		else:
+			if unsorted:
+				bucket.sort()
+				unsorted = False
+				print bucket
 			for bindex in xrange(len(bucket)):
 				if num < bucket[bindex]:
+					# Insert the new smaller number
+					bucket.insert(bindex, num)
 					# Evict the largest number
 					bucket.pop()
-					bucket.append(num)
-					# Ensure the largest number is always last
-					bucket.sort()
 					break
 		print bucket
 		index += 1
