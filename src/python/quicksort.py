@@ -89,16 +89,15 @@ def quicksort_in_place_random(values):
         for j in xrange(start, end):  # end is exclusive, i.e. end will not be included in the range
             if values[j] <= pivot:
                 i = i + 1
-                # swap
-                values[i], values[j] = values[j], values[i]
+                values[i], values[j] = values[j], values[i]  # swap
 
         values[i+1], values[end] = values[end], values[i+1]
         return i+1
 
     def random_partition(start, end):
+        assert start < end
         i = random.randint(start, end) # randint is inclusive, end is included in the possible ints
-        # Swpa the random pivot with the end
-        values[end], values[i] = values[i], values[end]
+        values[end], values[i] = values[i], values[end]  # Swpa the random pivot with the end
         return partition(start, end)
 
     qs(0, len(values)-1)
