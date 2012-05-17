@@ -9,12 +9,14 @@ def nthsmallest_sort(numbers, n):
 	"""
 	Cheat and sort the list. 
 	
-	O(n log n)
+	O(n log n)  (Timsort)
 	"""
 	if n < 0:
 		raise ValueError('Invalid n')
 	sorted_numbers = sorted(numbers) # could do numbers.sort() to sort in place and modify param
 	return sorted_numbers[n]
+
+def 
 
 def nthsmallest(numbers, n):
 	"""
@@ -54,6 +56,8 @@ def nthsmallest(numbers, n):
 		index += 1
 
 	return bucket[-1]
+
+
 
 def _test_one(func, numbers, n, expected):
 	random.shuffle(numbers)

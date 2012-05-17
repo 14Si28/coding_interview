@@ -5,7 +5,7 @@ There are many quicksort variations and tweaks; this file just covers some basic
 
 Note: in Python use sorted() instead (Timsort).
 """
-import itertools
+import random
 
 def quicksort(values):
     """
@@ -67,6 +67,43 @@ def quicksort_in_place(values):
     qs(0, len(values)-1)
     return values
 
+def quicksort_in_place_random(values):
+    """
+    Use a random pivot.
+
+    O(n log n).
+
+    Reference: Introduction to Algorithms section 7.3
+    """
+    def qs(start, end):
+        if start >= end:
+            return
+        # print values  # Uncomment this to see the divide and conquer progression.
+        q = random_partition(start, end)
+        qs(start, q-1)
+        qs(q+1, end)
+
+    def partition(start, end):
+        pivot = values[end]
+        i = start - 1
+        for j in xrange(start, end):  # end is exclusive, i.e. end will not be included in the range
+            if values[j] <= pivot:
+                i = i + 1
+                # swap
+                values[i], values[j] = values[j], values[i]
+
+        values[i+1], values[end] = values[end], values[i+1]
+        return i+1
+
+    def random_partition(start, end):
+        i = random.randint(start, end) # randint is inclusive, end is included in the possible ints
+        # Swpa the random pivot with the end
+        values[end], values[i] = values[i], values[end]
+        return partition(start, end)
+
+    qs(0, len(values)-1)
+    return values
+
 def _test(func, input):
     expected = sorted(input)
     actual = func(input)
@@ -88,6 +125,7 @@ def _test_all(func):
 if __name__ == '__main__':
     _test_all(quicksort)
     _test_all(quicksort_in_place)
+    _test_all(quicksort_in_place_random)
 
 
 
