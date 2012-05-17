@@ -11,53 +11,41 @@ def nthsmallest_sort(numbers, n):
 	
 	O(n log n)  (Timsort)
 	"""
-	if n < 0:
+	if n <= 0:
 		raise ValueError('Invalid n')
-	sorted_numbers = sorted(numbers) # could do numbers.sort() to sort in place and modify param
-	return sorted_numbers[n]
+	return sorted(numbers)[n-1] # could do numbers.sort() to sort in place and modify param
 
-def 
+def nthsmallest_select(values, n):
+    def partition(start, end):
+        pivot = values[end]
+        i = start - 1
+        for j in xrange(start, end):  # end is exclusive, i.e. end will not be included in the range
+            if values[j] <= pivot:
+                i = i + 1
+                values[i], values[j] = values[j], values[i]  # swap
 
-def nthsmallest(numbers, n):
-	"""
-	n is 0 based, n = 1 returns the 2nd smallest number.
+        values[i+1], values[end] = values[end], values[i+1]
+        return i+1
 
-	This is O(n^2) due to the extra sorts, since the bucket is incrementally sorted and of constant size once full. 
-	This also uses extra storage of up to n.
-	
-	This is not a good solution.
-	"""
-	if n < 0:
-		raise ValueError('invalid n')
-	if len(numbers) < n:
-		raise ValueError('n must be > len(numbers)')
+    def random_partition(start, end):
+    	assert start < end
+    	i = random.randint(start, end) # randint is inclusive, end is included in the possible ints
+        values[end], values[i] = values[i], values[end]  # Swap the random pivot with the end
+        return partition(start, end)
 
-	unsorted = True
-	bucket = []
-	index = 0
-	while index < len(numbers):
-		num = numbers[index]
-		if len(bucket) <= n:
-			# Fill the bucket with n numbers first
-			bucket.append(num)
-		else:
-			if unsorted:
-				bucket.sort()
-				unsorted = False
-				print bucket
-			for bindex in xrange(len(bucket)):
-				if num < bucket[bindex]:
-					# Insert the new smaller number
-					bucket.insert(bindex, num)
-					# Evict the largest number
-					bucket.pop()
-					break
-		print bucket
-		index += 1
+    def random_select(start, end, i):
+    	if start == end:
+    		return values[start]
+    	pivot = random_partition(start, end)
+    	k = pivot - start + 1
+    	if i == k:
+    		return values[pivot]
+    	elif i < k:
+    		return random_select(start, pivot-1, i)
+    	else:
+    		return random_select(pivot+1, end, i-k)
 
-	return bucket[-1]
-
-
+    return random_select(0, len(values)-1, n)
 
 def _test_one(func, numbers, n, expected):
 	random.shuffle(numbers)
@@ -67,15 +55,16 @@ def _test_one(func, numbers, n, expected):
 	print '{} , {}   =====>   {}'.format(numbers, n, actual)
 
 def _test_all(func):
-	_test_one(func, [0,1,2,3,4,5,6,7,8], 2, 2)
-	_test_one(func, [0,1,2,3,4,5,6,7,8], 8, 8)
-	_test_one(func, [0,1,2,3,4,5,6,7,8], 1, 1)
-	_test_one(func, [0,1,2,3,4,5,6,7,8], 0, 0)
-	_test_one(func, [0,1], 1, 1)
-	_test_one(func, [0,1], 0, 0)
-	_test_one(func, [0], 0, 0)
+	print '_________ Func: {}'.format(func)
+	_test_one(func, [0,1,2,3,4,5,6,7,8], 3, 2)
+	_test_one(func, [0,1,2,3,4,5,6,7,8], 9, 8)
+	_test_one(func, [0,1,2,3,4,5,6,7,8], 2, 1)
+	_test_one(func, [0,1,2,3,4,5,6,7,8], 1, 0)
+	_test_one(func, [0,1], 2, 1)
+	_test_one(func, [0,1], 1, 0)
+	_test_one(func, [0], 1, 0)
 
 if __name__ == '__main__':
-	_test_all(nthsmallest)
 	_test_all(nthsmallest_sort)
+	_test_all(nthsmallest_select)
 
