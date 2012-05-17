@@ -1,5 +1,7 @@
 """
 Find the nth smallest integer in an array of integers.
+
+Follow up question: make this work effeciently with billions of integers.
 """
 import random
 
@@ -18,8 +20,9 @@ def nthsmallest(numbers, n):
 	"""
 	n is 0 based, n = 1 returns the 2nd smallest number.
 
-	This is O(n) despite the extra sorts, since the bucket is incrementally sorted and generally small in size. 
-
+	This is O(n^2) due to the extra sorts, since the bucket is incrementally sorted and of constant size once full. 
+	This also uses extra storage of up to n.
+	
 	This is not a good solution.
 	"""
 	if n < 0:
@@ -44,6 +47,7 @@ def nthsmallest(numbers, n):
 					# Ensure the largest number is always last
 					bucket.sort()
 					break
+		print bucket
 		index += 1
 
 	return bucket[-1]
