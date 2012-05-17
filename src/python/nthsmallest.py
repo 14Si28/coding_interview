@@ -3,9 +3,24 @@ Find the nth smallest integer in an array of integers.
 """
 import random
 
+def nthsmallest_sort(numbers, n):
+	"""
+	Cheat and sort the list. 
+	
+	O(n log n)
+	"""
+	if n < 0:
+		raise ValueError('Invalid n')
+	sorted_numbers = sorted(numbers) # could do numbers.sort() to sort in place and modify param
+	return sorted_numbers[n]
+
 def nthsmallest(numbers, n):
 	"""
 	n is 0 based, n = 1 returns the 2nd smallest number.
+
+	This is O(n) despite the extra sorts, since the bucket is incrementally sorted and generally small in size. 
+
+	This is not a good solution.
 	"""
 	if n < 0:
 		raise ValueError('invalid n')
@@ -51,3 +66,5 @@ def _test_all(func):
 
 if __name__ == '__main__':
 	_test_all(nthsmallest)
+	_test_all(nthsmallest_sort)
+
