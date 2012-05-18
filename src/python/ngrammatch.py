@@ -1,7 +1,7 @@
 """
 Given 2 text documents, find all 3-grams present in both documents.
 
-An n-gram is a sequence of n items; in this problem, four words in a sequence.
+An n-gram is a sequence of n items; in this problem, three words in a sequence.
 
 
 Reference:
