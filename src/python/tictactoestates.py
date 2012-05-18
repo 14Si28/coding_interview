@@ -18,6 +18,15 @@ def _coord_to_index(x, y):
 	"""
 	return 3*y + x
 
+def _print_board(board):
+	for y in xrange(3):
+		for x in xrange(3):
+			cell = board[_coord_to_index(x, y)]
+			if not cell:
+				cell = '_'
+			print cell,
+		print
+
 def _indices_for_win():
 	"""
 	return: a list of lists, each sub list is a series of 3 numbers, the indices of a winning row/col/diag
@@ -51,15 +60,6 @@ def _indices_for_win():
 
 	return indices
 
-def _print_board(board):
-	for y in xrange(3):
-		for x in xrange(3):
-			cell = board[_coord_to_index(x, y)]
-			if not cell:
-				cell = '_'
-			print cell,
-		print
-
 WINNING_INDICES = _indices_for_win()
 
 def _end_game(board):
@@ -76,30 +76,32 @@ def _end_game(board):
 	return False
 
 # Rough overestimate of possible turns (not end states): 9!
-def play(board, xs_turn, next_index, all_boards, tracker):
+def play(board, all_boards, tracker, xs_turn=False, next_index=-1):
 	"""
 	board: array of length 9 representing the board in order from from top left to lower right, i.e. board[0] is top left, board[3] is the first column from the left of the second row from the top, board[8] is the lower right corner.
 	xs_turn: boolean True if it's player x turn
 	all_boards: list of lists
 	tracker: set
 	"""
-	board = list(board)
-	board[next_index] = 'x' if xs_turn else 'o'
-	if _end_game(board):
-		# Prevent duplicates
-		sig = ''.join(board)
-		if not sig in tracker:
-			tracker.add(sig)	
-			all_boards.append(board)
-		return
+	# On initialization, no one takes a turn. This lets us explore all 9 choices for x's first turn.
+	if next_index >= 0:
+		board = list(board)
+		board[next_index] = 'x' if xs_turn else 'o'
+		if _end_game(board):
+			# Prevent duplicates
+			sig = ''.join(board)
+			if not sig in tracker:
+				tracker.add(sig)	
+				all_boards.append(board)
+			return
 	for index in xrange(9):
 		if not board[index]: # test that the cell is still open
-			play(board, not xs_turn, index, all_boards, tracker)
+			play(board, all_boards, tracker, not xs_turn, index)
 
 def start_playing():
 	board = ['',]*9
 	all_boards = []
-	play(board, True, 0, all_boards, set())
+	play(board, all_boards, set())
 	print len(all_boards)
 	for x in xrange(min(len(all_boards),100)):
 		_print_board(all_boards[x])
