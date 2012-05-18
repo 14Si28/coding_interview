@@ -94,15 +94,17 @@ def play(board, all_boards, tracker, xs_turn=False, next_index=-1):
 				tracker.add(sig)	
 				all_boards.append(board)
 			return
+	# For all cells...
 	for index in xrange(9):
 		if not board[index]: # test that the cell is still open
+			# Recurse to explore taking this turn
 			play(board, all_boards, tracker, not xs_turn, index)
 
 def start_playing():
 	board = ['',]*9
 	all_boards = []
 	play(board, all_boards, set())
-	print len(all_boards)
+	print 'Total end states: {}'.format(len(all_boards))
 	for x in xrange(min(len(all_boards),100)):
 		_print_board(all_boards[x])
 		print
