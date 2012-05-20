@@ -11,7 +11,7 @@ Index of Files in This Directory
 ===================================
 
 
-`fibonacci.py <./fibonacci.py>`_
+`fibonacci.py <./python/fibonacci.py>`_
 ____________________________________________________________________
 
 Generate Fibonacci numbers with two different implementations.
@@ -19,7 +19,7 @@ Generate Fibonacci numbers with two different implementations.
 0,1,1,2,3,5,8,13,21,34,55,89,144
 
 
-`fifoqueue.py <./fifoqueue.py>`_
+`fifoqueue.py <./python/fifoqueue.py>`_
 ____________________________________________________________________
 
 Create a simple FIFO queue, and separately a fixed size FIFO queue, each with add(), remove(), and count() *methods* (no properties).
@@ -27,7 +27,7 @@ Create a simple FIFO queue, and separately a fixed size FIFO queue, each with ad
 Clearly unnecessary in Python.
 
 
-`fizzbuzz.py <./fizzbuzz.py>`_
+`fizzbuzz.py <./python/fizzbuzz.py>`_
 ____________________________________________________________________
 
 Fizz buzz aka bizz buzz. 
@@ -36,7 +36,7 @@ Count from 0 to 100, replacing any number divisible by 3 with fizz, divisible by
 and divisible by both 3 and 5 with fizz buzz.
 
 
-`gameoflife.py <./gameoflife.py>`_
+`gameoflife.py <./python/gameoflife.py>`_
 ____________________________________________________________________
 
 Conway's Game of Life
@@ -46,13 +46,13 @@ Any live cell with more than three live neighbours dies, as if by overcrowding.
 Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 
-`genreadme.py <./genreadme.py>`_
+`genreadme.py <./python/genreadme.py>`_
 ____________________________________________________________________
 
 Generate the README from a directory's file docstrings.
 
 
-`matchdocindex.py <./matchdocindex.py>`_
+`matchdocindex.py <./python/matchdocindex.py>`_
 ____________________________________________________________________
 
 Given a data structure that maps words to document indexes, return a list of document indexes that match all terms.
@@ -80,13 +80,13 @@ For more background, you can also search for:
 * Book: Introduction to Information Retrieval by Manning et al
 
 
-`mvc.py <./mvc.py>`_
+`mvc.py <./python/mvc.py>`_
 ____________________________________________________________________
 
 Simplified MVC examples.
 
 
-`mvvm.py <./mvvm.py>`_
+`mvvm.py <./python/mvvm.py>`_
 ____________________________________________________________________
 
 Simplified MVVM ( Model View ViewModel ) example.
@@ -94,7 +94,7 @@ MVVM is a pattern commonly used in .NET WPF, a specialization of MVP, PM, and it
 This pattern is almost never used in Python; this is an illustration.
 
 
-`ngrammatch.py <./ngrammatch.py>`_
+`ngrammatch.py <./python/ngrammatch.py>`_
 ____________________________________________________________________
 
 Given 2 text documents, find all 3-grams present in both documents.
@@ -108,7 +108,7 @@ Section 3.2.2 k-gram indexes for wildcard queries
 Additional background (unnecessary for solving this problem): cosine similarity.
 
 
-`nthsmallest.py <./nthsmallest.py>`_
+`nthsmallest.py <./python/nthsmallest.py>`_
 ____________________________________________________________________
 
 Find the nth smallest integer in an array of integers.
@@ -116,7 +116,7 @@ Find the nth smallest integer in an array of integers.
 Follow up question: make this work effeciently with billions of integers.
 
 
-`pascalstriangle.py <./pascalstriangle.py>`_
+`pascalstriangle.py <./python/pascalstriangle.py>`_
 ____________________________________________________________________
 
 Generate Pascal's triangle::
@@ -130,13 +130,13 @@ Generate Pascal's triangle::
 
 
 
-`permutationcombo.py <./permutationcombo.py>`_
+`permutationcombo.py <./python/permutationcombo.py>`_
 ____________________________________________________________________
 
 Generate all permutations of characters in a given input string, e.g. 'ab' ==> { 'ab', 'ba' }
 
 
-`prefixnotation.py <./prefixnotation.py>`_
+`prefixnotation.py <./python/prefixnotation.py>`_
 ____________________________________________________________________
 
 Implement a calculator for prefix notation (Polish notation).
@@ -155,7 +155,7 @@ performs: (1 * ( 2 + 6 )) / 4
 result: 2
 
 
-`quicksort.py <./quicksort.py>`_
+`quicksort.py <./python/quicksort.py>`_
 ____________________________________________________________________
 
 Quicksort illustration. 
@@ -165,7 +165,7 @@ There are many quicksort variations and tweaks; this file just covers some basic
 Note: in Python use sorted() instead (Timsort).
 
 
-`secretsanta.py <./secretsanta.py>`_
+`secretsanta.py <./python/secretsanta.py>`_
 ____________________________________________________________________
 
 Secret Santa problem: exchange of presents among a group. 
@@ -178,7 +178,7 @@ Create an algorithm that, as randomly as possible, assigns givers and recipients
 Then prove that it works correctly.
 
 
-`sortrgb.py <./sortrgb.py>`_
+`sortrgb.py <./python/sortrgb.py>`_
 ____________________________________________________________________
 
 Sorting exercise as an interview question, as seen in the wild. 
@@ -212,7 +212,7 @@ Please do not use external resources like compilers and Google. We expect you to
 the code yourself without other help.
 
 
-`sumsequence.py <./sumsequence.py>`_
+`sumsequence.py <./python/sumsequence.py>`_
 ____________________________________________________________________
 
 Given an unsorted sequence of integers, find the largest sum from a subsequence.
@@ -224,7 +224,7 @@ Answer: 8
 from subsequence 1,2,5
 
 
-`termspellcombo.py <./termspellcombo.py>`_
+`termspellcombo.py <./python/termspellcombo.py>`_
 ____________________________________________________________________
 
 Given a dictionary of words (English and other languages), then given an input search term, 
@@ -239,7 +239,7 @@ Follow up: what if the dictionary has hundreds of millions of words?
 Variation: what if you must generate the variations? 
 
 
-`tictactoestates.py <./tictactoestates.py>`_
+`tictactoestates.py <./python/tictactoestates.py>`_
 ____________________________________________________________________
 
 Determine all valid end states of a game of tic tac toe. (The board state at the completion of the game.)
@@ -247,13 +247,13 @@ Determine all valid end states of a game of tic tac toe. (The board state at the
 Alternate way of asking this: determine all possible tic tac toe board layouts.
 
 
-`timeremain.py <./timeremain.py>`_
+`timeremain.py <./python/timeremain.py>`_
 ____________________________________________________________________
 
 Convert a remaining time in seconds to its components (remaining hours, minutes, seconds).
 
 
-`treebfs.py <./treebfs.py>`_
+`treebfs.py <./python/treebfs.py>`_
 ____________________________________________________________________
 
 Illustrate a breadth first search in a binary tree.
