@@ -25,9 +25,9 @@ Index of Files in This Directory
 def _print_section(filename):
 	print ''
 	#print '{}'.format(filename)
-	print '`{} <./{}>`_'.format(filename, filename)
+	# The ./python subdir is off the git base of tree/master/src
+	print '`{} <./python/{}>`_'.format(filename, filename)
 	print '____________________________________________________________________'
-	#print '`{} <http://google.com>`_'.format(filename)
 
 def _summary(input_file):
 	docstr_started = False
