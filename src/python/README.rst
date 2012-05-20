@@ -165,10 +165,6 @@ There are many quicksort variations and tweaks; this file just covers some basic
 Note: in Python use sorted() instead (Timsort).
 
 
-`README.rst <./README.rst>`_
-____________________________________________________________________
-
-
 `secretsanta.py <./secretsanta.py>`_
 ____________________________________________________________________
 
@@ -255,10 +251,6 @@ Alternate way of asking this: determine all possible tic tac toe board layouts.
 ____________________________________________________________________
 
 Convert a remaining time in seconds to its components (remaining hours, minutes, seconds).
-
-
-`tmp.html <./tmp.html>`_
-____________________________________________________________________
 
 
 `treebfs.py <./treebfs.py>`_

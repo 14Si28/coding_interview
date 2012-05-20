@@ -7,7 +7,7 @@ from os import path
 import re
 
 DOCSTR_RE = re.compile(r'^"""')
-EXCLUDED_FILES = { '__init__.py' }
+EXCLUDED_FILES = { '__init__.py', 'README.rst', 'tmp.html', 'README.html' }
 
 HEADER = """===============================================
 Coding Interview Problem Solutions in Python
