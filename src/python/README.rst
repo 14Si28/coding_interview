@@ -6,24 +6,24 @@ Index of Files
 ========================
 
 
-fibonacci.py
-________________________________
+`fibonacci.py <./fibonacci.py>`_
+____________________________________________________________________
 
 Generate Fibonacci numbers with two different implementations.
 "the first two numbers in the Fibonacci sequence are 0 and 1, and each subsequent number is the sum of the previous two."
 0,1,1,2,3,5,8,13,21,34,55,89,144
 
 
-fifoqueue.py
-________________________________
+`fifoqueue.py <./fifoqueue.py>`_
+____________________________________________________________________
 
 Create a simple FIFO queue, and separately a fixed size FIFO queue, each with add(), remove(), and count() *methods* (no properties).
 
 Clearly unnecessary in Python.
 
 
-fizzbuzz.py
-________________________________
+`fizzbuzz.py <./fizzbuzz.py>`_
+____________________________________________________________________
 
 Fizz buzz aka bizz buzz. 
 
@@ -31,8 +31,8 @@ Count from 0 to 100, replacing any number divisible by 3 with fizz, divisible by
 and divisible by both 3 and 5 with fizz buzz.
 
 
-gameoflife.py
-________________________________
+`gameoflife.py <./gameoflife.py>`_
+____________________________________________________________________
 
 Conway's Game of Life
 Any live cell with fewer than two live neighbours dies, as if caused by under-population.
@@ -41,14 +41,14 @@ Any live cell with more than three live neighbours dies, as if by overcrowding.
 Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 
-genreadme.py
-________________________________
+`genreadme.py <./genreadme.py>`_
+____________________________________________________________________
 
 Generate the README from a directory's file docstrings.
 
 
-matchdocindex.py
-________________________________
+`matchdocindex.py <./matchdocindex.py>`_
+____________________________________________________________________
 
 Given a data structure that maps words to document indexes, return a list of document indexes that match all terms.
 Assume that the list of document indexes are sorted in ascending order and there are no duplicates within each list.
@@ -75,22 +75,22 @@ For more background, you can also search for:
 * Book: Introduction to Information Retrieval by Manning et al
 
 
-mvc.py
-________________________________
+`mvc.py <./mvc.py>`_
+____________________________________________________________________
 
 Simplified MVC examples.
 
 
-mvvm.py
-________________________________
+`mvvm.py <./mvvm.py>`_
+____________________________________________________________________
 
 Simplified MVVM ( Model View ViewModel ) example.
 MVVM is a pattern commonly used in .NET WPF, a specialization of MVP, PM, and its variants.
 This pattern is almost never used in Python; this is an illustration.
 
 
-ngrammatch.py
-________________________________
+`ngrammatch.py <./ngrammatch.py>`_
+____________________________________________________________________
 
 Given 2 text documents, find all 3-grams present in both documents.
 
@@ -103,16 +103,16 @@ Section 3.2.2 k-gram indexes for wildcard queries
 Additional background (unnecessary for solving this problem): cosine similarity.
 
 
-nthsmallest.py
-________________________________
+`nthsmallest.py <./nthsmallest.py>`_
+____________________________________________________________________
 
 Find the nth smallest integer in an array of integers.
 
 Follow up question: make this work effeciently with billions of integers.
 
 
-pascalstriangle.py
-________________________________
+`pascalstriangle.py <./pascalstriangle.py>`_
+____________________________________________________________________
 
 Generate Pascal's triangle::
 
@@ -125,14 +125,14 @@ Generate Pascal's triangle::
 
 
 
-permutationcombo.py
-________________________________
+`permutationcombo.py <./permutationcombo.py>`_
+____________________________________________________________________
 
 Generate all permutations of characters in a given input string, e.g. 'ab' ==> { 'ab', 'ba' }
 
 
-prefixnotation.py
-________________________________
+`prefixnotation.py <./prefixnotation.py>`_
+____________________________________________________________________
 
 Implement a calculator for prefix notation (Polish notation).
 
@@ -150,8 +150,8 @@ performs: (1 * ( 2 + 6 )) / 4
 result: 2
 
 
-quicksort.py
-________________________________
+`quicksort.py <./quicksort.py>`_
+____________________________________________________________________
 
 Quicksort illustration. 
 
@@ -160,12 +160,12 @@ There are many quicksort variations and tweaks; this file just covers some basic
 Note: in Python use sorted() instead (Timsort).
 
 
-README.rst
-________________________________
+`README.rst <./README.rst>`_
+____________________________________________________________________
 
 
-secretsanta.py
-________________________________
+`secretsanta.py <./secretsanta.py>`_
+____________________________________________________________________
 
 Secret Santa problem: exchange of presents among a group. 
 Given a list of names, each person gives one present to one other person. 
@@ -177,8 +177,8 @@ Create an algorithm that, as randomly as possible, assigns givers and recipients
 Then prove that it works correctly.
 
 
-sortrgb.py
-________________________________
+`sortrgb.py <./sortrgb.py>`_
+____________________________________________________________________
 
 Sorting exercise as an interview question, as seen in the wild. 
 
@@ -211,8 +211,8 @@ Please do not use external resources like compilers and Google. We expect you to
 the code yourself without other help.
 
 
-sumsequence.py
-________________________________
+`sumsequence.py <./sumsequence.py>`_
+____________________________________________________________________
 
 Given an unsorted sequence of integers, find the largest sum from a subsequence.
 
@@ -223,8 +223,8 @@ Answer: 8
 from subsequence 1,2,5
 
 
-termspellcombo.py
-________________________________
+`termspellcombo.py <./termspellcombo.py>`_
+____________________________________________________________________
 
 Given a dictionary of words (English and other languages), then given an input search term, 
 determine all valid words that differ by only one character 
@@ -238,26 +238,26 @@ Follow up: what if the dictionary has hundreds of millions of words?
 Variation: what if you must generate the variations? 
 
 
-tictactoestates.py
-________________________________
+`tictactoestates.py <./tictactoestates.py>`_
+____________________________________________________________________
 
 Determine all valid end states of a game of tic tac toe. (The board state at the completion of the game.)
 
 Alternate way of asking this: determine all possible tic tac toe board layouts.
 
 
-timeremain.py
-________________________________
+`timeremain.py <./timeremain.py>`_
+____________________________________________________________________
 
 Convert a remaining time in seconds to its components (remaining hours, minutes, seconds).
 
 
-tmp.html
-________________________________
+`tmp.html <./tmp.html>`_
+____________________________________________________________________
 
 
-treebfs.py
-________________________________
+`treebfs.py <./treebfs.py>`_
+____________________________________________________________________
 
 Illustrate a breadth first search in a binary tree.
 

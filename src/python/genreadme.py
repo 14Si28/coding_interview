@@ -19,8 +19,10 @@ Index of Files
 
 def _print_section(filename):
 	print ''
-	print '{}'.format(filename)
-	print '________________________________'
+	#print '{}'.format(filename)
+	print '`{} <./{}>`_'.format(filename, filename)
+	print '____________________________________________________________________'
+	#print '`{} <http://google.com>`_'.format(filename)
 
 def _summary(input_file):
 	docstr_started = False
