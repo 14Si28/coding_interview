@@ -19,29 +19,30 @@ def main(start_path):
 	print '========================'
 	dirpath, dirnames, filenames = os.walk(start_path).next()
 	for fn in filenames:
+		if fn in EXCLUDED_FILES:
+			continue
 		print ''
 		print '{}'.format(fn)
 		print '________________________________'
 		try:
-			if not fn in EXCLUDED_FILES:
-				with open(fn) as input_file:
-					docstr_started = False
-					summary = []
-					for line in input_file:
-						if re.match(DOCSTR_RE, line):
-							if docstr_started:
-								break
-							else:
-								docstr_started = True
-						elif not docstr_started:
-							break
-
+			with open(fn) as input_file:
+				docstr_started = False
+				summary = []
+				for line in input_file:
+					if re.match(DOCSTR_RE, line):
 						if docstr_started:
-							sline = re.sub(DOCSTR_RE, '', line).strip()
-							sline = re.sub(DOCSTR_ESCAPE_RE, '\\\1', sline)
-							if sline:
-								summary.append(line)
-				print ''.join(summary)
+							break
+						else:
+							docstr_started = True
+					elif not docstr_started:
+						break
+
+					if docstr_started:
+						sline = re.sub(DOCSTR_RE, '', line).strip()
+						sline = re.sub(DOCSTR_ESCAPE_RE, '\\\1', sline)
+						if sline:
+							summary.append(line)
+			print ''.join(summary)
 		except Exception as ex:
 			sys.stderr.write('ERROR: failed to generate summary: {}\n'.format(ex))
 			print ''

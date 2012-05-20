@@ -5,9 +5,6 @@ Coding Interview Problem Solutions in Python
 Index of Files
 ========================
 
-__init__.py
-________________________________
-
 fibonacci.py
 ________________________________
 Generate Fibonacci numbers with two different implementations.
@@ -129,10 +126,6 @@ There are many quicksort variations and tweaks; this file just covers some basic
 Note: in Python use sorted() instead (Timsort).
 
 
-README.rst
-________________________________
-
-
 README.txt
 ________________________________
 
@@ -151,30 +144,22 @@ sortrgb.py
 ________________________________
 Sorting exercise as an interview question, as seen in the wild. 
 This is a variant of the Dutch national flag problem (Dijkstra).
-/*
-* Suppose that we have three object types R, G, and B, and an array containing objects of
-* those types:
-*
-* { g, r, b, r, r, g, g }
-*
-* The goal is to write a function that will, in place, rearrange the elements such
-* that all R's appear at the beginning of the array, G's in the middle and B's at
-* the end. For the input above, by the end of execution the input array should look like:
-*
-* { r, r, r, g, g, g, b }
-*
-* The goal is to solve this as efficiently as possible, optimizing O() runtime,
-* O() space. The ideal solution uses O(1) space and only makes one pass through the array.
-*
-* Assume you have global functions:
-*   bool isR(Object *o);
-*   bool isG(Object *o);
-*   bool isB(Object *o);
-* to test each object type.
-*
-* Please do not use external resources like compilers and Google. We expect you to verify
-* the code yourself without other help.
-*/
+Suppose that we have three object types R, G, and B, and an array containing objects of
+those types:
+{ g, r, b, r, r, g, g }
+The goal is to write a function that will, in place, rearrange the elements such
+that all R's appear at the beginning of the array, G's in the middle and B's at
+the end. For the input above, by the end of execution the input array should look like:
+{ r, r, r, g, g, g, b }
+The goal is to solve this as efficiently as possible, optimizing O() runtime,
+O() space. The ideal solution uses O(1) space and only makes one pass through the array.
+Assume you have global functions:
+  bool isR(Object *o);
+  bool isG(Object *o);
+  bool isB(Object *o);
+to test each object type.
+Please do not use external resources like compilers and Google. We expect you to verify
+the code yourself without other help.
 
 
 sumsequence.py
@@ -207,10 +192,6 @@ Alternate way of asking this: determine all possible tic tac toe board layouts.
 timeremain.py
 ________________________________
 Convert a remaining time in seconds to its components (remaining hours, minutes, seconds).
-
-
-tmp.html
-________________________________
 
 
 treebfs.py
