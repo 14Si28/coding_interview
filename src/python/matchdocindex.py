@@ -4,22 +4,24 @@ Assume that the list of document indexes are sorted in ascending order and there
 
 e.g.
 
-Given:
-{ 
-    'yummy': [0, 3, 7, 8],
-    'japanese': [3, 5, 8],
-    'ramen': [0, 1, 2, 3, 5, 8]
-}
+Given::
 
-Return:
-[3, 8]
+    { 
+        'yummy': [0, 3, 7, 8],
+        'japanese': [3, 5, 8],
+        'ramen': [0, 1, 2, 3, 5, 8]
+    }
+
+Return::
+
+    [3, 8]
 
 This problem is a simplified presentation of word level inverted indexes. 
 You don't need to know inverted indexes or document classification to solve this problem.
 For more background, you can also search for:
-- Word postings and posting lists
-- Term frequency inverse document frequency tf*idf. 
-- Book: Introduction to Information Retrieval by Manning et al
+* Word postings and posting lists
+* Term frequency inverse document frequency tf*idf. 
+* Book: Introduction to Information Retrieval by Manning et al
 """
 
 def find_matches(term_postings):

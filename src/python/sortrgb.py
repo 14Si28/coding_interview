@@ -18,10 +18,12 @@ the end. For the input above, by the end of execution the input array should loo
 The goal is to solve this as efficiently as possible, optimizing O() runtime,
 O() space. The ideal solution uses O(1) space and only makes one pass through the array.
 
-Assume you have global functions:
-  bool isR(Object *o);
-  bool isG(Object *o);
-  bool isB(Object *o);
+Assume you have global functions::
+
+    bool isR(Object *o);
+    bool isG(Object *o);
+    bool isB(Object *o);
+
 to test each object type.
 
 Please do not use external resources like compilers and Google. We expect you to verify

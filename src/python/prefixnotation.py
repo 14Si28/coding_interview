@@ -6,11 +6,11 @@ Examples:
 performs: 3 + 5
 result: 8
 
-* + 1 1 4
+\* + 1 1 4
 performs: (1 + 1) * 4
 result: 8
 
-/ * 1 + 2 6 4
+/ \* 1 + 2 6 4
 performs: (1 * ( 2 + 6 )) / 4
 result: 2
 """
