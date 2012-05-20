@@ -6,7 +6,8 @@ Generate all permutations of characters in a given input string, e.g. 'ab' ==> {
 #
 # Trivia: There's also math.factorial()
 # Definitions refresher: 
-#  Permutations: order matters. 'ab' and 'ba' are distinct. With repetitions: n^r (choosing r items). Without repitition: n! / (n - r)!
+#  n choose r: n items, choosing r for each permutation/combination.
+#  Permutations: order matters. 'ab' and 'ba' are distinct. With repetitions: n^r. Without repitition: n! / (n - r)!
 #  Combinations: order does not matter. 'ab' = 'ba'. Without repitition: n! / ( r! (n - r)! ). With reptition: (n + r - 1)! / ( r! (n - 1)! )
 
 def permute(input):
