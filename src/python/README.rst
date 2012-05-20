@@ -1,0 +1,103 @@
+===============================================
+Coding Interview Problem Solutions in Python
+===============================================
+
+Index of Files
+========================
+
+
+fibonacci.py
+________________________________
+\"\"\"Generate Fibonacci numbers with two different implementations\.\"the first two numbers in the Fibonacci sequence are 0 and 1\, and each subsequent number is the sum of the previous two\.\"0\,1\,1\,2\,3\,5\,8\,13\,21\,34\,55\,89\,144
+
+fifoqueue.py
+________________________________
+\"\"\"Create a simple FIFO queue\, and separately a fixed size FIFO queue\, each with add\(\)\, remove\(\)\, and count\(\) *methods* \(no properties\)\.Clearly unnecessary in Python\.
+
+fizzbuzz.py
+________________________________
+\"\"\"Fizz buzz aka bizz buzz\.Count from 0 to 100\, replacing any number divisible by 3 with fizz\, divisible by 5 with buzz\,and divisible by both 3 and 5 with fizz buzz\.
+
+gameoflife.py
+________________________________
+\"\"\"Conway\'s Game of LifeAny live cell with fewer than two live neighbours dies\, as if caused by under\-population\.Any live cell with two or three live neighbours lives on to the next generation\.Any live cell with more than three live neighbours dies\, as if by overcrowding\.Any dead cell with exactly three live neighbours becomes a live cell\, as if by reproduction\.
+
+genreadme.py
+________________________________
+\"\"\"Generate the README from a directory\'s file docstrings\.
+
+matchdocindex.py
+________________________________
+\"\"\"Given a data structure that maps words to document indexes\, return a list of document indexes that match all terms\.Assume that the list of document indexes are sorted in ascending order and there are no duplicates within each list\.e\.g\.Given\:\{\'yummy\'\: \[0\, 3\, 7\, 8\]\,\'japanese\'\: \[3\, 5\, 8\]\,\'ramen\'\: \[0\, 1\, 2\, 3\, 5\, 8\]\}Return\:\[3\, 8\]This problem is a simplified presentation of word level inverted indexes\.You don\'t need to know inverted indexes or document classification to solve this problem\.For more background\, you can also search for\:\- Word postings and posting lists\- Term frequency inverse document frequency tf*idf\.\- Book\: Introduction to Information Retrieval by Manning et al
+
+mvc.py
+________________________________
+\"\"\"Simplified MVC examples\.
+
+mvvm.py
+________________________________
+\"\"\"Simplified MVVM \( Model View ViewModel \) example\.MVVM is a pattern commonly used in \.NET WPF\, a specialization of MVP\, PM\, and its variants\.This pattern is almost never used in Python\; this is an illustration\.
+
+ngrammatch.py
+________________________________
+\"\"\"Given 2 text documents\, find all 3\-grams present in both documents\.An n\-gram is a sequence of n items\; in this problem\, three words in a sequence\.Reference\:Introduction to Information Retrieval by Manning et alSection 3\.2\.2 k\-gram indexes for wildcard queriesAdditional background \(unnecessary for solving this problem\)\: cosine similarity\.
+
+nthsmallest.py
+________________________________
+\"\"\"Find the nth smallest integer in an array of integers\.Follow up question\: make this work effeciently with billions of integers\.
+
+pascalstriangle.py
+________________________________
+\"\"\"Generate Pascal\'s triangle\.11\, 11\, 2\, 11\, 3\, 3\, 11\, 4\, 6\, 4\, 11\, 5\, 10\, 10\, 5\, 1
+
+permutationcombo.py
+________________________________
+\"\"\"Generate all permutations of characters in a given input string\, e\.g\. \'ab\' ==\> \{ \'ab\'\, \'ba\' \}
+
+prefixnotation.py
+________________________________
+\"\"\"Implement a calculator for prefix notation \(Polish notation\)\.Examples\:+ 3 5performs\: 3 + 5result\: 8* + 1 1 4performs\: \(1 + 1\) * 4result\: 8\/ * 1 + 2 6 4performs\: \(1 * \( 2 + 6 \)\) \/ 4result\: 2
+
+quicksort.py
+________________________________
+\"\"\"Quicksort illustration\.There are many quicksort variations and tweaks\; this file just covers some basics\.Note\: in Python use sorted\(\) instead \(Timsort\)\.
+
+README.rst
+________________________________
+
+
+README.txt
+________________________________
+
+
+secretsanta.py
+________________________________
+\"\"\"Secret Santa problem\: exchange of presents among a group\.Given a list of names\, each person gives one present to one other person\.Everyone must give only one present\, and each must receive one present\.The exchange cannot be reciprocal\, e\.g\. if person A gives to B\, B cannot give to A\.Create an algorithm that\, as randomly as possible\, assigns givers and recipients\.Then prove that it works correctly\.
+
+sortrgb.py
+________________________________
+\"\"\"Sorting exercise as an interview question\, as seen in the wild\.This is a variant of the Dutch national flag problem \(Dijkstra\)\.Suppose that we have three object types R\, G\, and B\, and an array containing objects ofthose types\:\{ g\, r\, b\, r\, r\, g\, g \}The goal is to write a function that will\, in place\, rearrange the elements suchthat all R\'s appear at the beginning of the array\, G\'s in the middle and B\'s atthe end\. For the input above\, by the end of execution the input array should look like\:\{ r\, r\, r\, g\, g\, g\, b \}The goal is to solve this as efficiently as possible\, optimizing O\(\) runtime\,O\(\) space\. The ideal solution uses O\(1\) space and only makes one pass through the array\.Assume you have global functions\:bool isR\(Object *o\)\;bool isG\(Object *o\)\;bool isB\(Object *o\)\;to test each object type\.Please do not use external resources like compilers and Google\. We expect you to verifythe code yourself without other help\.
+
+sumsequence.py
+________________________________
+\"\"\"Given an unsorted sequence of integers\, find the largest sum from a subsequence\.Example\:Given\: \[\-10\, 1\, 2\, 5\, \-3\]Answer\: 8from subsequence 1\,2\,5
+
+termspellcombo.py
+________________________________
+\"\"\"Given a dictionary of words \(English and other languages\)\, then given an input search term\,determine all valid words that differ by only one character\(anywhere in the input term\)\. No additional characters are added\,i\.e\. the length of the search term matches the length of the alternate words\.\"lair\"  ==\> fair\, airy\,  \.\.\.\"ball\" ==\> fall\, wall\, tall\, bail\, Bali \.\.\.Follow up\: what if the dictionary has hundreds of millions of words\?Variation\: what if you must generate the variations\?
+
+tictactoestates.py
+________________________________
+\"\"\"Determine all valid end states of a game of tic tac toe\. \(The board state at the completion of the game\.\)Alternate way of asking this\: determine all possible tic tac toe board layouts\.
+
+timeremain.py
+________________________________
+\"\"\"Convert a remaining time in seconds to its components \(remaining hours\, minutes\, seconds\)\.
+
+tmp.html
+________________________________
+
+
+treebfs.py
+________________________________
+\"\"\"Illustrate a breadth first search in a binary tree\.
