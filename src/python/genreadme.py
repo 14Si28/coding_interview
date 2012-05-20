@@ -16,7 +16,7 @@ Coding Interview Problem Solutions in Python
 Cracking the Coding Interview
 =================================
 
-See `the cracking subdir <./cracking>`_.
+See `the cracking subdir <./python/cracking>`_.
 
 Index of Files in This Directory
 ===================================
