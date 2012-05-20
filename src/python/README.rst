@@ -2,8 +2,13 @@
 Coding Interview Problem Solutions in Python
 ===============================================
 
-Index of Files
-========================
+Cracking the Coding Interview
+=================================
+
+See `the cracking subdir <./cracking>`_.
+
+Index of Files in This Directory
+===================================
 
 
 `fibonacci.py <./fibonacci.py>`_
