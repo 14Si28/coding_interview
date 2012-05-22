@@ -80,6 +80,20 @@ For more background, you can also search for:
 * Book: Introduction to Information Retrieval by Manning et al
 
 
+`multiplyarray.py <./python/multiplyarray.py>`_
+____________________________________________________________________
+
+Given an array of integers, return a new array where each element is 
+the product of all other elements from the original array except that index.
+
+e.g.
+Given [3, 8, 2]
+Return [16, 6, 24]
+Which is [(8*2), (3*2), (3*8)]
+
+Follow up questions: Can you make it O(n)? How would you test it for correctness? What about negative numbers and 0's?
+
+
 `mvc.py <./python/mvc.py>`_
 ____________________________________________________________________
 
@@ -163,6 +177,23 @@ Quicksort illustration.
 There are many quicksort variations and tweaks; this file just covers some basics.
 
 Note: in Python use sorted() instead (Timsort).
+
+
+`rangemap.py <./python/rangemap.py>`_
+____________________________________________________________________
+
+Given an integer, return a string. There is an integer range that always returns a particular string for that range.
+
+e.g.
+
+* 1,2,3...9 => "kitten"
+* 10,11,12..19 => "chicklet"
+* 20,21,22..49 => "calf"
+* 10000..393451 => "bunny"
+* 393452..598274 => "puppy"
+
+There is no pattern to the beginning or ending of each range, but the numbers within a range are guaranteed to be contiguous. 
+The ranges are known up front, but assume there could be many millions of ranges.
 
 
 `secretsanta.py <./python/secretsanta.py>`_
