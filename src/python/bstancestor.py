@@ -5,9 +5,13 @@ find the lowest level common ancestor of two target values.
 
 def find_ancestor(tree, low_value, high_value):
     """
+    O(log n)
+
     tree: nested tuples of the form (int_value, left_node, right_node)
     low_value: smaller int 
     high_value: larger int
+
+    returns: int value of smallest (lowest level) common ancestor
     """
     assert low_value < high_value
     # Assume sorted BST, lowest to highest, no duplicates.
