@@ -3,42 +3,28 @@ Given a binary search tree with integer values sorted from lowest to highest (le
 find the lowest level common ancestor of two target values.
 """
 
-def _search(tree, target_value):
-    assert len(tree) == 3
-    visited = []
-    node = list(tree)
-    while node:
-        current = node
-        assert len(node) == 3
-        current_value = current[0]
-        node = []
-        visited.append(current_value)
-        if target_value == current_value:
-            return visited
-        elif target_value < current_value:
-            node = current[1] # left
-        else:
-            assert target_value > current_value 
-            node = current[2] # right
-    return None # not found
-
 def find_ancestor(tree, low_value, high_value):
+    """
+    tree: nested tuples of the form (int_value, left_node, right_node)
+    low_value: smaller int 
+    high_value: larger int
+    """
+    assert low_value < high_value
     # Assume sorted BST, lowest to highest, no duplicates.
-    # Find paths to target values.
-    low_path = _search(tree, low_value)
-    high_path = _search(tree, high_value)
-    # Find the lowest intersection of the paths.
-    for high_index in xrange(len(high_path)-1, -1, -1):
-        for low_index in xrange(len(low_path)):
-            current = low_path[low_index]
-            # print '? {} == {} '.format(current, high_path[high_index])
-            if current == high_path[high_index]:
-                return current
+    node = tree
+    while node:
+        current_value = node[0]
+        if current_value < low_value:
+            node = node[2] # go right to higher values
+        elif current_value > high_value:
+            node = node[1] # go left to lower values
+        elif low_value <= current_value <= high_value:
+            return current_value
+        else:
+            break
     return None
-    
 
 def _test_bst(tree, low, high, expected):
-    # (value, left, right)
     actual = find_ancestor( tree, low, high )
     print '{} , {} , {}  ===>  {}'.format(tree, low, high, actual)
     if actual != expected:
