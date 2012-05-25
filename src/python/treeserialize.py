@@ -3,7 +3,49 @@ Create functions to serialize a binary tree to a string and deserialize it from 
 """
 import re
 
-def serialize(node):
+TREE_ITEMS_RE = re.compile(r'\s+')
+NONE_STR = str(None)
+
+def serialize_recurse(node):
+    """
+    Serialize using depth first pre-order traversal, returned strings values are space delimited.
+    """
+    if not node:
+        return NONE_STR
+
+    assert len(node) == 3
+
+    return ' {} {} {} '.format(
+        node[1], # value
+        serialize_recurse(node[0]), # left
+        serialize_recurse(node[2]) # right
+    )
+
+def deserialize_recurse(treestr):
+    """
+    Deserialize from a space delimited tree string using depth first pre-order traversal.
+    """
+    items = itemize_parens(treestr)
+
+    # workaround for python 2.x lack of closure scoping, refer to python 3.x nonlocal 
+    def f(): pass
+    f.index = 0
+
+    def _desr():
+        if f.index > len(items) - 1 or items[f.index] == NONE_STR:
+            f.index += 1
+            return None
+
+        node = _new_node()
+        node[1] = int(items[f.index])
+        f.index += 1
+        node[0] =_desr()
+        node[2] =_desr()
+        return node
+
+    return _desr()
+
+def serialize_parens(node):
     """
     Create a string version of the tree with parenthesis to group each node, spaces delimit all tokens.
 
@@ -17,14 +59,12 @@ def serialize(node):
     if not node:
         return ''
     return ' ( {} {} {} ) '.format(
-        serialize(node[0]),  # left
+        serialize_parens(node[0]),  # left
         node[1], # value
-        serialize(node[2])  # right
+        serialize_parens(node[2])  # right
     )
-
-TREE_ITEMS_RE = re.compile(r'\s+')
         
-def itemize(treestr):
+def itemize_parens(treestr):
     if not isinstance(treestr, basestring):
         raise ValueError('Tree must be a string: {}'.format(treestr))
     # TODO Error handling, esp. invalid tokens
@@ -34,11 +74,14 @@ def itemize(treestr):
 def _new_node():
     return [None, None, None]
 
-def deserialize(treestr):
+def deserialize_parens(treestr):
+    """
+    Deserialize the parenthesis tree string using iteration.
+    """
     prev = None
     stack = [] # Place to store nodes as we reconstruct the tree
     assignments = [] # Track whether the left node has been assigned
-    items = itemize(treestr)
+    items = itemize_parens(treestr)
     assert items
     for item in items:
         assert item
@@ -91,5 +134,6 @@ def _test_all(serialize_func, deserialize_func):
     _test_one(serialize_func, deserialize_func, [[None, 5, [None, 7, None]], 8, [[None, 9, None], 10, [None, 11, None]]])
 
 if __name__ == '__main__':
-    _test_all(serialize, deserialize)
+    _test_all(serialize_parens, deserialize_parens)
+    _test_all(serialize_recurse, deserialize_recurse)
 
