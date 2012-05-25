@@ -16,7 +16,7 @@ def secretsanta_shuffle(attendees):
     O(n)
     In this solution, we randomize the list of attendees, 
     then sequentially assign recipients using the next in the random list.
-    This is cheating but simple. It does not correctly prevent reciprocal assignment.
+    This is cheating but simple. 
     Python's shuffle uses the Fisher-Yates algo which is O(n).
     """
     if not attendees:
