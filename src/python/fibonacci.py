@@ -28,6 +28,24 @@ def fibonacci_iterative(n):
     return seq
 
 
+def fibonacci_sequence(n, k):
+    """
+    Generate the Fibonacci sequence from n to k inclusive. n and k must be Fibnacci numbers.
+    """
+    assert k > n
+    # TODO base case
+    seq = []
+    prev = [0, 1]
+    curr = 0
+    while curr < k:
+        curr = prev[1] + prev[0]
+        prev[0] = prev[1]
+        prev[1] = curr
+        if curr >= n:
+            seq.append(curr)
+
+    return seq
+
 
 #################################################
 # Tests
@@ -49,5 +67,9 @@ def _test_fibonacci(fib_func):
 if __name__ == '__main__':
     _test_fibonacci(fibonacci_recursive)
     _test_fibonacci(fibonacci_iterative)
+
+    assert fibonacci_sequence(8, 21) == [8, 13, 21]
+    assert fibonacci_sequence(2, 13) == [2, 3, 5, 8, 13]
+    assert fibonacci_sequence(0, 34) == [1, 2, 3, 5, 8, 13, 21, 34]
 
 
