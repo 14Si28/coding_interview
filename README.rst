@@ -14,7 +14,7 @@ Created by Michael Lossos <mlossos at pobox.com>
 Where to Start
 ===================
 
-Most of the code is in: `src/python <./coding_interview/src/python/>`_
+Most of the code is in: `src/python <./coding_interview/tree/master/src/python>`_
 
 Cracking
 ===============
