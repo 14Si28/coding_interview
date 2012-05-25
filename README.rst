@@ -11,6 +11,10 @@ Some of these problems are from technical interviews, others from books, and oth
 
 Created by Michael Lossos <mlossos at pobox.com>
 
+Where to Start
+===================
+
+Most of the code is in: `src/python <./src/python/>`_
 
 Cracking
 ===============
