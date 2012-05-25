@@ -27,8 +27,9 @@ def deserialize_recurse(treestr):
     """
     items = itemize_parens(treestr)
 
-    # workaround for python 2.x lack of closure scoping, refer to python 3.x nonlocal 
+    # A function to use as a namespace to workaround for python 2.x lack of closure scoping, refer to python 3.x nonlocal 
     def f(): pass
+    # Track the index in the items outside of the recursive function calls.
     f.index = 0
 
     def _desr():
