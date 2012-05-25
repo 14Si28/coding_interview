@@ -25,16 +25,16 @@ def deserialize(treestr):
         assert item
         if item == '(':
             stack.append(_new_node())
-            assignments.append(_new_node())
+            assignments.append(False)
         elif item == ')':
             assert stack
             prev = stack.pop()
             assignments.pop()
             if stack:
                 top = stack[-1]
-                if not assignments[-1][0]:
+                if not assignments[-1]:
                     top[0] = prev  # left
-                    assignments[-1][0] = True
+                    assignments[-1] = True
                 else:
                     top[2] = prev  # right
             else:
@@ -44,7 +44,7 @@ def deserialize(treestr):
             assert stack
             top = stack[-1]
             top[1] = int(item)  # value
-            assignments[-1][0] = True
+            assignments[-1] = True
 
     assert prev
     return prev
