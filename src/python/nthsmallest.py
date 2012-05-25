@@ -29,7 +29,7 @@ def nthsmallest_select(values, n):
         i = start - 1
         for j in xrange(start, end):  # end is exclusive, i.e. end will not be included in the range
             if values[j] <= pivot:
-                i = i + 1
+                i += 1
                 values[i], values[j] = values[j], values[i]  # swap
 
         values[i+1], values[end] = values[end], values[i+1]
