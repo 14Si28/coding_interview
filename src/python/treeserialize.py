@@ -88,6 +88,7 @@ def _test_all(serialize_func, deserialize_func):
     _test_one(serialize_func, deserialize_func, [None, 8, [None, 10, None]])
     _test_one(serialize_func, deserialize_func, [[None, 5, None], 8, [None, 10, None]])
     _test_one(serialize_func, deserialize_func, [[None, 5, [None, 7, None]], 8, [None, 10, None]])
+    _test_one(serialize_func, deserialize_func, [[None, 5, [None, 7, None]], 8, [[None, 9, None], 10, [None, 11, None]]])
 
 if __name__ == '__main__':
     _test_all(serialize, deserialize)
