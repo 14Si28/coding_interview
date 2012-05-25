@@ -47,6 +47,13 @@ def fibonacci_sequence(n, k):
     return seq
 
 
+def fibonacci_number(n):
+    if n <= 1:
+        return 0
+    if n <= 3:
+        return 1
+    return fibonacci_number(n-2) + fibonacci_number(n-1)
+
 #################################################
 # Tests
 
@@ -71,5 +78,9 @@ if __name__ == '__main__':
     assert fibonacci_sequence(8, 21) == [8, 13, 21]
     assert fibonacci_sequence(2, 13) == [2, 3, 5, 8, 13]
     assert fibonacci_sequence(0, 34) == [1, 2, 3, 5, 8, 13, 21, 34]
+
+    assert fibonacci_number(5) == 3
+    assert fibonacci_number(10) == 34
+    assert fibonacci_number(13) == 144
 
 
