@@ -3,6 +3,25 @@ Create functions to serialize a binary tree to a string and deserialize it from 
 """
 import re
 
+def serialize(node):
+    """
+    Create a string version of the tree with parenthesis to group each node, spaces delimit all tokens.
+
+    node: a list of lists representing the tree, each list has 3 elements (left, value, right).
+
+    Examples: 
+    [None, 8, None]  ===>   (  8  )
+    [[None, 5, None], 8, None]  ===>   (  (  5  )  8  )
+    [None, 8, [None, 10, None]]  ===>   (  8  (  10  )  )
+    """
+    if not node:
+        return ''
+    return ' ( {} {} {} ) '.format(
+        serialize(node[0]),  # left
+        node[1], # value
+        serialize(node[2])  # right
+    )
+
 TREE_ITEMS_RE = re.compile(r'\s+')
         
 def itemize(treestr):
@@ -17,8 +36,8 @@ def _new_node():
 
 def deserialize(treestr):
     prev = None
-    stack = []
-    assignments = []
+    stack = [] # Place to store nodes as we reconstruct the tree
+    assignments = [] # Track whether the left node has been assigned
     items = itemize(treestr)
     assert items
     for item in items:
@@ -48,15 +67,6 @@ def deserialize(treestr):
 
     assert prev
     return prev
-
-def serialize(node):
-    if not node:
-        return ''
-    return ' ( {} {} {} ) '.format(
-        serialize(node[0]),  # left
-        node[1], # value
-        serialize(node[2])  # right
-    )
 
 # Using a node class just makes this solution clunkier. We use lists of lists.
 # class Node(object):
