@@ -44,14 +44,14 @@ def nthsmallest_select(values, n):
     def random_select(start, end, i):
         if start == end:
             return values[start]
-        pivot = random_partition(start, end)
-        k = pivot - start + 1
+        q = random_partition(start, end)
+        k = q - start + 1
         if i == k:
-            return values[pivot]
+            return values[q]
         elif i < k:
-            return random_select(start, pivot-1, i)
+            return random_select(start, q-1, i)
         else:
-            return random_select(pivot+1, end, i-k)
+            return random_select(q+1, end, i-k)
 
     return random_select(0, len(values)-1, n)
 
