@@ -7,6 +7,7 @@ from os import path
 import re
 
 DOCSTR_RE = re.compile(r'^"""')
+INCLUDED_FILES_RE = re.compile(r'\.py$')
 EXCLUDED_FILES = { '__init__.py', 'README.rst', 'tmp.html', 'README.html' }
 
 HEADER = """===============================================
@@ -50,7 +51,7 @@ def main(start_path):
 	print HEADER
 	dirpath, dirnames, filenames = os.walk(start_path).next()
 	for fn in filenames:
-		if fn in EXCLUDED_FILES:
+		if fn in EXCLUDED_FILES or not INCLUDED_FILES_RE.search(fn):
 			continue
 		_print_section(fn)
 		try:
