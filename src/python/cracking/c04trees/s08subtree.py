@@ -4,6 +4,8 @@ Create an algorithm to decide if T2 is a subtree of T1.
 T2 is a subtree of T1 if there exists a node n in T1 such that the subtree of n is identical to T2.
 """
 
+# nodes are (value, left, right)
+
 def subtree(tree1, tree2):
 	"""
 	returns: True if tree2 is a subtree of tree1
