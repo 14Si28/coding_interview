@@ -18,6 +18,37 @@ Given a binary search tree with integer values sorted from lowest to highest (le
 find the lowest level common ancestor of two target values.
 
 
+`comboparens.py <./python/comboparens.py>`_
+____________________________________________________________________
+
+Generate all permutations of balanced parenthesis given a quantity of pairs.
+
+* n = 1: ['()']
+* n = 2: ['()()', '(())']
+* n = 3: ['()(())', '((()))', '(()())', '(())()', '()()()']
+
+
+`combopermutation.py <./python/combopermutation.py>`_
+____________________________________________________________________
+
+Generate all permutations of characters in a given input string, e.g. 'ab' ==> { 'ab', 'ba' }
+
+
+`combotermspell.py <./python/combotermspell.py>`_
+____________________________________________________________________
+
+Given a dictionary of words (English and other languages), then given an input search term, 
+determine all valid words that differ by only one character 
+(anywhere in the input term). No additional characters are added, 
+i.e. the length of the search term matches the length of the alternate words.
+
+"lair"  ==> fair, airy,  ...
+"ball" ==> fall, wall, tall, bail, Bali ...
+
+Follow up: what if the dictionary has hundreds of millions of words?
+Variation: what if you must generate the variations? 
+
+
 `fibonacci.py <./python/fibonacci.py>`_
 ____________________________________________________________________
 
@@ -151,12 +182,6 @@ Generate Pascal's triangle::
 
 
 
-`permutationcombo.py <./python/permutationcombo.py>`_
-____________________________________________________________________
-
-Generate all permutations of characters in a given input string, e.g. 'ab' ==> { 'ab', 'ba' }
-
-
 `prefixnotation.py <./python/prefixnotation.py>`_
 ____________________________________________________________________
 
@@ -216,6 +241,12 @@ Create an algorithm that, as randomly as possible, assigns givers and recipients
 Then prove that it works correctly.
 
 
+`shuffling.py <./python/shuffling.py>`_
+____________________________________________________________________
+
+Implement a fair randomized shuffling algorithm for a deck of cards.
+
+
 `sortrgb.py <./python/sortrgb.py>`_
 ____________________________________________________________________
 
@@ -260,21 +291,6 @@ Example:
 Given: [-10, 1, 2, 5, -3]
 Answer: 8 
 from subsequence 1,2,5
-
-
-`termspellcombo.py <./python/termspellcombo.py>`_
-____________________________________________________________________
-
-Given a dictionary of words (English and other languages), then given an input search term, 
-determine all valid words that differ by only one character 
-(anywhere in the input term). No additional characters are added, 
-i.e. the length of the search term matches the length of the alternate words.
-
-"lair"  ==> fair, airy,  ...
-"ball" ==> fall, wall, tall, bail, Bali ...
-
-Follow up: what if the dictionary has hundreds of millions of words?
-Variation: what if you must generate the variations? 
 
 
 `tictactoestates.py <./python/tictactoestates.py>`_
