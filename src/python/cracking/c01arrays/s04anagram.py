@@ -1,5 +1,7 @@
 """
 Write a method to decide if two strings are anagrams or not.
+
+An anagram is a type of word play, the result of rearranging the letters of a word or phrase to produce a new word or phrase, using all the original letters exactly once; for example orchestra can be rearranged into carthorse. 
 """
 
 def is_anagram_cheat(a, b):
@@ -54,6 +56,7 @@ def _test_anagram_all(func):
     _check_anagram_func(func, 'catalogue', 'coagulate', True)
     _check_anagram_func(func, 'basiparachromatin', 'marsipobranchiata', True)
     _check_anagram_func(func, 'undefinability', 'unidentifiably', True)
+    _check_anagram_func(func, 'undefinability', 'unidentifiable', False)
 
 def _test_all():
     _test_anagram_all(is_anagram_naive)
