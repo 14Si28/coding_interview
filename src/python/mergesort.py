@@ -1,47 +1,42 @@
 """
 Merge sort.
 
-O(n log n).
+O(n log n), stable.
 """
-import sys
+import random
 
 def merge_sort(values):
-	def merge(values, p, q, r):
-		n1 = q - p + 1
-		n2 = r - q
-		left = [None,]*(n1+1)
-		right = [None,]*(n2+1)
-		left[-1] = sys.maxint # sentinel
-		right[-1] = sys.maxint
+	# From: http://rosettacode.org/wiki/Sorting_algorithms/Merge_sort#Python
 
-		for i in xrange(n1+1):
-			left[i] = values[p+i-1]
+	# Note: you could reuse Python's heapq.merge()
+	def merge(left, right):
+	    result = []
+	 
+	    while left and right:
+	        if left[0] <= right[0]:
+	            result.append(left.pop(0))
+	        else:
+	            result.append(right.pop(0))
+	 
+	    if right:
+	        result.extend(right)
+	    if left:
+	        result.extend(left)
+	    return result
 
-		for j in xrange(n2+1):
-			right[j] = values[q+j]
+	def msort(m):
+	    if len(m) <= 1:
+	        return m
+	 
+	    middle = len(m) / 2
+	    left = m[:middle]
+	    right = m[middle:]
+	 
+	    left = msort(left)
+	    right = msort(right)
+	    return list(merge(left, right))
 
-		i = 1
-		j = 1
-		for k in xrange(p, r+1):
-			if left[i] <= right[j]:
-				values[k] = left[i]
-				i += 1
-			else:
-				values[k] = right[i]
-				j += 1
-
-	def msort(values, p, r):
-		if p >= r:
-			return
-
-		q = (p+r)/2
-		msort(values, p, q)
-		msort(values, q+1, r)
-		merge(values, p, q, r)
-
-	msort(values, 0, len(values)-1)
-	return values
-
+	return msort(values)
 
 def _test_one(input):
 	expected = sorted(input)
