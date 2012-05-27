@@ -11,11 +11,8 @@ Index of Files in This Directory
 ===================================
 
 
-`bstancestor.py <./python/bstancestor.py>`_
+`__init__.pyc <./python/__init__.pyc>`_
 ____________________________________________________________________
-
-Given a binary search tree with integer values sorted from lowest to highest (left nodes lower than right nodes), with no duplicates,
-find the lowest level common ancestor of two target values.
 
 
 `comboparens.py <./python/comboparens.py>`_
@@ -90,6 +87,14 @@ ____________________________________________________________________
 Generate the README from a directory's file docstrings.
 
 
+`insertionsort.py <./python/insertionsort.py>`_
+____________________________________________________________________
+
+Insertion sort.
+
+O(n) best, O(n^2) worst.
+
+
 `matchdocindex.py <./python/matchdocindex.py>`_
 ____________________________________________________________________
 
@@ -116,6 +121,14 @@ For more background, you can also search for:
 * Word postings and posting lists
 * Term frequency inverse document frequency tf*idf. 
 * Book: Introduction to Information Retrieval by Manning et al
+
+
+`mergesort.py <./python/mergesort.py>`_
+____________________________________________________________________
+
+Merge sort.
+
+O(n log n), stable.
 
 
 `multiplyarray.py <./python/multiplyarray.py>`_
@@ -305,6 +318,13 @@ Alternate way of asking this: determine all possible tic tac toe board layouts.
 ____________________________________________________________________
 
 Convert a remaining time in seconds to its components (remaining hours, minutes, seconds).
+
+
+`treeancestor.py <./python/treeancestor.py>`_
+____________________________________________________________________
+
+Given a binary search tree with integer values sorted from lowest to highest (left nodes lower than right nodes), with no duplicates,
+find the lowest level common ancestor of two target values.
 
 
 `treebfs.py <./python/treebfs.py>`_
