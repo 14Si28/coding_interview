@@ -12,6 +12,7 @@ from cracking.c02linkedlists import s02find
 from cracking.c02linkedlists import s03deletenode
 from cracking.c02linkedlists import s04adder
 from cracking.c02linkedlists import s05detectcycle
+from cracking.c03stacks import s04towersofhanoi
 
 
 
@@ -55,4 +56,8 @@ class Testc02linkedlists(unittest.TestCase):
 
     def test_s05detectcycle(self):
         s05detectcycle._test_all()
+
+class Testc03stacks(unittest.TestCase):
+    def test_s04towersofhanoi(self):
+        s04towersofhanoi._test_all()
 
