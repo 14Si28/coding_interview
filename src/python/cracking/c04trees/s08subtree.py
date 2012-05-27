@@ -1,6 +1,6 @@
 """
-You have two very large binary trees: T1, with millions of nodes, and T2, with hundreds of nodes Create an algorithm to decide if T2 is a subtree of T1.
-
+You have two very large binary trees: T1, with millions of nodes, and T2, with hundreds of nodes.
+Create an algorithm to decide if T2 is a subtree of T1.
 T2 is a subtree of T1 if there exists a node n in T1 such that the subtree of n is identical to T2.
 """
 
@@ -19,8 +19,8 @@ def subtree(tree1, tree2):
 		if node1[0] != node2[0]:
 			# Values do not match
 			return False
-		return ( all_nodes_match(node1[1], node2[1]), # left
-			all_nodes_match(node1[2], node2[2]) ) # right
+		return ( all_nodes_match(node1[1], node2[1]) # left
+			and all_nodes_match(node1[2], node2[2]) ) # right
 
 	def subtree_recurse(node1, node2):
 		if not node1 or not node2:
@@ -53,7 +53,7 @@ def _test_all():
                         (7, None, None)
                     )
                 )
-	tree3 = (3, None, None)
+	tree3 = (1, None, None)
 	assert subtree(tree2, tree1)
 	assert subtree(tree2, tree2)
 	assert subtree(tree1, tree1)
