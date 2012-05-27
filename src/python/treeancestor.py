@@ -30,7 +30,7 @@ def find_ancestor_bst(tree, low_value, high_value):
 
 def find_ancestor_bintree(node, p_node, q_node):
     """
-    node: a binary tree (not a BST, may not be sorted).
+    node: a binary tree (not necessarily a BST, may not be sorted).
     p_node, q_node: nodes to find ancestor of.
 
     returns: tuple of (common_ancestor_node, true_if_ancestor)
