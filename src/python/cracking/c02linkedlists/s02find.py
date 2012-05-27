@@ -6,6 +6,8 @@ import linkedlist # Relative import makes it possible to run this script from an
 
 def find(the_list, nth_from_last):
     """
+    Track up to nth_from_last nodes. This is not space efficient.
+
     the_list: a LinkedList of LinkedListNodes
 
     nth_from_last: n to last element to return. 0 returns the last node in the list, 1 returns second to last, etc.
@@ -26,7 +28,25 @@ def find(the_list, nth_from_last):
         raise Exception('List is empty.')
     return visited_nodes.pop(0)
 
+def find_from_end2(the_list, nth_from_end):
+    """
+    node: the starting Node in the linked list
+    """
+    start_node = the_list.head
+    node = start_node
+    seen_count = 0
+    found_node = None
+    while node:
+        if seen_count >= nth_from_end:
+            if not found_node:
+                found_node = start_node
+            else:
+                found_node = found_node.next
 
+        seen_count += 1
+        node = node.next
+
+    return found_node
 
 #################################
 # Tests
@@ -71,6 +91,7 @@ def _test_find_cases(func):
 
 def _test_all():
     _test_find_cases(find)
+    _test_find_cases(find_from_end2)
     print 'SUCCESS'
 
 if __name__ == '__main__':
