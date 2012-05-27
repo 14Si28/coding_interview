@@ -3,11 +3,11 @@ Given a binary search tree with integer values sorted from lowest to highest (le
 find the lowest level common ancestor of two target values.
 """
 
-def find_ancestor(tree, low_value, high_value):
+def find_ancestor_bst(tree, low_value, high_value):
     """
     O(log n)
 
-    tree: nested tuples of the form (int_value, left_node, right_node)
+    tree: nested tuples of the form (int_value, left_node, right_node). MUST be a binary search tree (sorted).
     low_value: smaller int 
     high_value: larger int
 
@@ -28,18 +28,44 @@ def find_ancestor(tree, low_value, high_value):
             break
     return None
 
-def _test_bst(tree, low, high, expected):
-    actual = find_ancestor( tree, low, high )
+def find_ancestor_bintree(node, p_node, q_node):
+    """
+    node: a binary tree (not a BST, may not be sorted).
+    p_node, q_node: nodes to find ancestor of
+    """
+    if not node:
+        return None
+
+    if node == p_node == q_node:
+        return node
+
+    print ' ?? {} '.format(node)
+    x = find_ancestor_bintree(node[1], p_node, q_node) # left
+    if x and x != p_node and x != q_node:
+        return x
+
+    y = find_ancestor_bintree(node[2], p_node, q_node) # right
+    if y and y != p_node and y != q_node:
+        return y
+
+    if x and y:
+        # Found the comon ancestor
+        return node
+    elif node == p_node or node == q_node:
+        return node
+    else:
+        assert not x or not y
+        a = x if x else y
+        return a
+
+def _test_bst(func, tree, low, high, expected):
+    actual = func( tree, low, high )
     print '{} , {} , {}  ===>  {}'.format(tree, low, high, actual)
     if actual != expected:
         raise Exception('FAIL Expected: {}   Actual: {}'.format(expected, actual))
     
-def _test_all():
-    tree1 = (4, (2, (1, None, None), (3, None, None)), (5, None, None))
-    _test_bst( tree1, 1, 5, 4)
-    _test_bst( tree1, 1, 3, 2)
-
-    tree2 = (8, 
+def create_tree2():
+    return (8, 
                 (3, (1, None, None), 
                     (6, 
                         (4, None, None), 
@@ -53,13 +79,29 @@ def _test_all():
                     )
                 )
             )
-    _test_bst( tree2, 3, 7, 3 )
-    _test_bst( tree2, 1, 7, 3 )
-    _test_bst( tree2, 3, 13, 8 )
-    _test_bst( tree2, 9, 13, 10 )
-    _test_bst( tree2, 9, 11, 10 )
-    _test_bst( tree2, 11, 13, 12 )
+
+def _test_all(func):
+    tree1 = (4, (2, (1, None, None), (3, None, None)), (5, None, None))
+    _test_bst(func, tree1, 1, 5, 4)
+    _test_bst(func, tree1, 1, 3, 2)
+
+    tree2 = create_tree2()
+    _test_bst(func, tree2, 3, 7, 3 )
+    _test_bst(func, tree2, 1, 7, 3 )
+    _test_bst(func, tree2, 3, 13, 8 )
+    _test_bst(func, tree2, 9, 13, 10 )
+    _test_bst(func, tree2, 9, 11, 10 )
+    _test_bst(func, tree2, 11, 13, 12 )
+
+def _test_find_ancestor_bintree():
+    tree2 = create_tree2()
+    p_node = tree2[1][2][1]
+    q_node = tree2[1][1]
+    actual = find_ancestor_bintree(tree2, p_node, q_node)
+    assert actual == tree2[1]
+    print '! {}'.format(actual)
 
 if __name__ == '__main__':
-    _test_all()
-    
+    _test_all(find_ancestor_bst)
+    _test_find_ancestor_bintree()
+
