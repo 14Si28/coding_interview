@@ -36,6 +36,7 @@ def _test_one(func, input, expected):
 		raise Exception('FAIL. Expected: {}   Actual: {}'.format(expected, actual))
 
 def _test_all(func):
+	_test_one(func, 'a', {'a'})
 	_test_one(func, 'ab', {'ab', 'ba'})
 	_test_one(func, 'abc', {'abc', 'acb', 'bac', 'bca', 'cab', 'cba'})
 	_test_one(func, 'abcd', {'abcd', 'abdc', 'acbd', 'acdb', 'adbc', 'adcb', 'bacd', 'badc', 'bcad', 'bcda', 'bdac', 'bdca', 'cabd', 'cadb', 'cbad', 'cbda', 'cdab', 'cdba', 'dabc', 'dacb', 'dbac', 'dbca', 'dcab', 'dcba'})
