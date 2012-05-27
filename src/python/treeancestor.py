@@ -31,32 +31,42 @@ def find_ancestor_bst(tree, low_value, high_value):
 def find_ancestor_bintree(node, p_node, q_node):
     """
     node: a binary tree (not a BST, may not be sorted).
-    p_node, q_node: nodes to find ancestor of
+    p_node, q_node: nodes to find ancestor of.
+
+    returns: tuple of (common_ancestor_node, true_if_ancestor)
+        true_if_ancestor distinguishes a real common ancestor from node not found.
+        true_if_ancestor is only True if both p_node and q_node were found.
     """
     if not node:
-        return None
+        return None, False
 
     if node == p_node == q_node:
-        return node
+        return node, True
 
     print ' ?? {} '.format(node)
-    x = find_ancestor_bintree(node[1], p_node, q_node) # left
+    x, rx = find_ancestor_bintree(node[1], p_node, q_node) # left
     if x and x != p_node and x != q_node:
-        return x
+        return x, rx
 
-    y = find_ancestor_bintree(node[2], p_node, q_node) # right
+    y, ry = find_ancestor_bintree(node[2], p_node, q_node) # right
     if y and y != p_node and y != q_node:
-        return y
+        return y, ry
 
     if x and y:
         # Found the comon ancestor
-        return node
+        return node, True
     elif node == p_node or node == q_node:
-        return node
+        # If at one of the nodes to find (p_node or q_node), 
+        # and we also found the other node in a subtree (x or y)
+        # then this node is really the ancestor. 
+        # Otherwise one of the target values has not been found,
+        # and this is not a true ancestor.
+        real_ancestor = x or y
+        return node, real_ancestor
     else:
         assert not x or not y
         a = x if x else y
-        return a
+        return a, False
 
 def _test_bst(func, tree, low, high, expected):
     actual = func( tree, low, high )
@@ -97,9 +107,10 @@ def _test_find_ancestor_bintree():
     tree2 = create_tree2()
     p_node = tree2[1][2][1]
     q_node = tree2[1][1]
-    actual = find_ancestor_bintree(tree2, p_node, q_node)
-    assert actual == tree2[1]
+    actual, real_ancestor = find_ancestor_bintree(tree2, p_node, q_node)
     print '! {}'.format(actual)
+    assert actual == tree2[1]
+    assert real_ancestor
 
 if __name__ == '__main__':
     _test_all(find_ancestor_bst)
