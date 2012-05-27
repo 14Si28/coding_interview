@@ -8,7 +8,7 @@ Generate all permutations of balanced parenthesis given a quantity of pairs.
 
 def gen_parens(n):
     """
-    O(n) ?
+    O(n!) ?
     """
     if n <= 1:
         return [ '()' ]
