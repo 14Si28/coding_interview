@@ -12,6 +12,7 @@ import linkedlist
 def find_cycle_node(the_list):
     """
     Detect cycles by tracking the id of every visited node.
+    Average O(n) time, O(n) space.
 
     the_list: a LinkedList of LinkedListNodes
 
@@ -28,6 +29,9 @@ def find_cycle_node(the_list):
 def find_cycle_node_skip(the_list):
     """
     Detect cycles using Floyd's algorithm (aka skip pointer, fast, runner, hare).
+    Average case O(n) time (actually O(lambda + mu), see wiki)
+    Space O(1)
+
     http://en.wikipedia.org/wiki/Cycle_detection
 
     the_list: a LinkedList of LinkedListNodes
