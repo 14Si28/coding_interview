@@ -56,7 +56,8 @@ def quicksort_in_place(values):
         pivot = values[end]
         i = start - 1
         for j in xrange(start, end):
-            if values[j] <= pivot:
+            # Order is determined by this comparison. <= for ascending smallest to largest, > for descending
+            if values[j] <= pivot:  
                 i += 1
                 # swap
                 values[i], values[j] = values[j], values[i]
