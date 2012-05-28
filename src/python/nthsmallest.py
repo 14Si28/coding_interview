@@ -28,7 +28,9 @@ def nthsmallest_select(values, n):
         pivot = values[end]
         i = start - 1
         for j in xrange(start, end):  # end is exclusive, i.e. end will not be included in the range
-            if values[j] <= pivot:
+            # Order is determined by this comparison.
+            # To find the largest integer instead of smallest, change to >
+            if values[j] <= pivot: 
                 i += 1
                 values[i], values[j] = values[j], values[i]  # swap
 
@@ -45,7 +47,9 @@ def nthsmallest_select(values, n):
         if start == end:
             return values[start]
         q = random_partition(start, end)
-        k = q - start + 1
+        # values[q] is the pivot
+        k = q - start + 1 
+        # k is the number of elements in the subarray values[start:q+1] (inclusive of the pivot element)
         if i == k:
             return values[q]
         elif i < k:
