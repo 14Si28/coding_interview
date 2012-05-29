@@ -53,6 +53,12 @@ def quicksort_in_place(values):
         qs(q+1, end)
 
     def partition(start, end):
+        # Illustration of regions in the partition:
+        #
+        # start    i|          |j    |end
+        # |_________|__________|_____|pivot
+        #  <= pivot |  > pivot |     |
+        #
         pivot = values[end]
         i = start - 1
         for j in xrange(start, end):
