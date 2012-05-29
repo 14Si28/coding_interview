@@ -6,6 +6,8 @@ import re
 TREE_ITEMS_RE = re.compile(r'\s+')
 NONE_STR = str(None)
 
+# nodes are represented as lists of lists [left, value, right]
+
 def serialize_recurse(node):
     """
     Serialize using depth first pre-order traversal, returned strings values are space delimited.
@@ -38,10 +40,10 @@ def deserialize_recurse(treestr):
             return None
 
         node = _new_node()
-        node[1] = int(items[f.index])
+        node[1] = int(items[f.index]) # value
         f.index += 1
-        node[0] =_desr()
-        node[2] =_desr()
+        node[0] =_desr() # left
+        node[2] =_desr() # right
         return node
 
     return _desr()
