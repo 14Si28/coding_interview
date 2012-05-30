@@ -51,10 +51,14 @@ def nthsmallest_select(values, n):
         k = q - start + 1 
         # k is the number of elements in the subarray values[start:q+1] (inclusive of the pivot element)
         if i == k:
+            # i elements are sorted, so the pivot value is the one we're looking for.
             return values[q]
         elif i < k:
+            # already sorted a sufficient number of elements k, repeat search on the left partition.
             return random_select(start, q-1, i)
-        else:
+        else: 
+            assert i > k
+            # still need to search in the right partition, but reduce i by the k elements we have already sorted.
             return random_select(q+1, end, i-k)
 
     return random_select(0, len(values)-1, n)
