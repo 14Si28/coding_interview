@@ -11,35 +11,10 @@ Index of Files in This Directory
 ===================================
 
 
-`comboparens.py <./python/comboparens.py>`_
+`combinations.py <./python/combinations.py>`_
 ____________________________________________________________________
 
-Generate all permutations of balanced parenthesis given a quantity of pairs.
-
-* n = 1: ['()']
-* n = 2: ['()()', '(())']
-* n = 3: ['()(())', '((()))', '(()())', '(())()', '()()()']
-
-
-`combopermutation.py <./python/combopermutation.py>`_
-____________________________________________________________________
-
-Generate all permutations of characters in a given input string, e.g. 'ab' ==> { 'ab', 'ba' }
-
-
-`combotermspell.py <./python/combotermspell.py>`_
-____________________________________________________________________
-
-Given a dictionary of words (English and other languages), then given an input search term, 
-determine all valid words that differ by only one character 
-(anywhere in the input term). No additional characters are added, 
-i.e. the length of the search term matches the length of the alternate words.
-
-"lair"  ==> fair, airy,  ...
-"ball" ==> fall, wall, tall, bail, Bali ...
-
-Follow up: what if the dictionary has hundreds of millions of words?
-Variation: what if you must generate the variations? 
+Generate all combinations of a list of choices.
 
 
 `fibonacci.py <./python/fibonacci.py>`_
@@ -89,6 +64,12 @@ ____________________________________________________________________
 Insertion sort.
 
 O(n) best, O(n^2) worst.
+
+
+`linkedlistfindnth.py <./python/linkedlistfindnth.py>`_
+____________________________________________________________________
+
+Find the nth value from the end of a singly linked list.
 
 
 `matchdocindex.py <./python/matchdocindex.py>`_
@@ -189,6 +170,37 @@ Generate Pascal's triangle::
       1, 4, 6, 4, 1
     1, 5, 10, 10, 5, 1
 
+
+
+`permutations.py <./python/permutations.py>`_
+____________________________________________________________________
+
+Generate all permutations of characters in a given input string, e.g. 'ab' ==> { 'ab', 'ba' }
+
+
+`permuteparens.py <./python/permuteparens.py>`_
+____________________________________________________________________
+
+Generate all permutations of balanced parenthesis given a quantity of pairs.
+
+* n = 1: ['()']
+* n = 2: ['()()', '(())']
+* n = 3: ['()(())', '((()))', '(()())', '(())()', '()()()']
+
+
+`permutermspell.py <./python/permutermspell.py>`_
+____________________________________________________________________
+
+Given a dictionary of words (English and other languages), then given an input search term, 
+determine all valid words that differ by only one character 
+(anywhere in the input term). No additional characters are added, 
+i.e. the length of the search term matches the length of the alternate words.
+
+"lair"  ==> fair, airy,  ...
+"ball" ==> fall, wall, tall, bail, Bali ...
+
+Follow up: what if the dictionary has hundreds of millions of words?
+Variation: what if you must generate the variations? 
 
 
 `prefixnotation.py <./python/prefixnotation.py>`_
