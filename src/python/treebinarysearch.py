@@ -1,5 +1,5 @@
 """
-Illustrate binary search on a BST.
+Illustrate binary search.
 """
 
 # nodes are [value, left, right]
@@ -13,7 +13,9 @@ TREE1 = [ 8,
        
 def binarysearch(node, value_to_find):
     """
-    node: list of lists representing a BST
+    O(n)
+
+    node: list of lists representing a binary tree (but not necessarily a BST, nodes not necessarily ordered).
     """
     if not node:
         return None
