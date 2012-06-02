@@ -17,7 +17,7 @@ Return::
     [3, 8]
 
 This problem is a simplified presentation of word level inverted indexes. 
-You don't need to know inverted indexes or document classification to solve this problem.
+You don't need to know inverted indexes or how to merge posting lists to solve this problem.
 For more background, you can also search for:
 * Word postings and posting lists
 * Term frequency inverse document frequency tf*idf. 
