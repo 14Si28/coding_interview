@@ -11,105 +11,105 @@ Alternate way of asking this: determine all possible tic tac toe board layouts.
 
 
 def _coord_to_index(x, y):
-	"""
-	x,y coordinates, where 0,0 is the upper left and 2,2 the lower right
+    """
+    x,y coordinates, where 0,0 is the upper left and 2,2 the lower right
 
-	return: a list index from 0 to 8 inclusive
-	"""
-	return 3*y + x
+    return: a list index from 0 to 8 inclusive
+    """
+    return 3*y + x
 
 def _print_board(board):
-	for y in xrange(3):
-		for x in xrange(3):
-			cell = board[_coord_to_index(x, y)]
-			if not cell:
-				cell = '_'
-			print cell,
-		print
+    for y in xrange(3):
+        for x in xrange(3):
+            cell = board[_coord_to_index(x, y)]
+            if not cell:
+                cell = '_'
+            print cell,
+        print
 
 def _indices_for_win():
-	"""
-	return: a list of lists, each sub list is a series of 3 numbers, the indices of a winning row/col/diag
-	"""
-	# We convert from x,y coordinates to list indices, though we could have just used list indices straightaway to avoid the conversion steps.
-	indices = []
-	# columns
-	for x in xrange(3):
-		line = []
-		for y in xrange(3):
-			line.append(_coord_to_index(x, y))
-		indices.append(line)
+    """
+    return: a list of lists, each sub list is a series of 3 numbers, the indices of a winning row/col/diag
+    """
+    # We convert from x,y coordinates to list indices, though we could have just used list indices straightaway to avoid the conversion steps.
+    indices = []
+    # columns
+    for x in xrange(3):
+        line = []
+        for y in xrange(3):
+            line.append(_coord_to_index(x, y))
+        indices.append(line)
 
-	# rows
-	for y in xrange(3):
-		line = []
-		for x in xrange(3):
-			line.append(_coord_to_index(x, y))
-		indices.append(line)
+    # rows
+    for y in xrange(3):
+        line = []
+        for x in xrange(3):
+            line.append(_coord_to_index(x, y))
+        indices.append(line)
 
-	# diagonals 
-	line = []
-	for x, y in [ (0,0), (1,1), (2,2) ]:
-		line.append(_coord_to_index(x, y))
-	indices.append(line)
+    # diagonals 
+    line = []
+    for x, y in [ (0,0), (1,1), (2,2) ]:
+        line.append(_coord_to_index(x, y))
+    indices.append(line)
 
-	line = []
-	for x, y in [ (2,0), (1,1), (0,2) ]:
-		line.append(_coord_to_index(x, y))
-	indices.append(line)
+    line = []
+    for x, y in [ (2,0), (1,1), (0,2) ]:
+        line.append(_coord_to_index(x, y))
+    indices.append(line)
 
-	return indices
+    return indices
 
 WINNING_INDICES = _indices_for_win()
 
 def _end_game(board):
-	for line in WINNING_INDICES:
-		first = board[line[0]]
-		if first:
-			won = True
-			for x in line[1:]:
-				if board[x] != first:
-					won = False
-			if won:
-				return True
+    for line in WINNING_INDICES:
+        first = board[line[0]]
+        if first:
+            won = True
+            for x in line[1:]:
+                if board[x] != first:
+                    won = False
+            if won:
+                return True
 
-	return False
+    return False
 
 # Rough overestimate of possible turns (not end states): 9!
 def play(board, all_boards, tracker, xs_turn=False, next_index=-1):
-	"""
-	board: array of length 9 representing the board in order from from top left to lower right, i.e. board[0] is top left, board[3] is the first column from the left of the second row from the top, board[8] is the lower right corner.
-	xs_turn: boolean True if it's player x turn
-	all_boards: list of lists
-	tracker: set
-	"""
-	# On initialization, no one takes a turn. This lets us explore all 9 choices for x's first turn.
-	if next_index >= 0:
-		board = list(board)
-		board[next_index] = 'x' if xs_turn else 'o'
-		if _end_game(board):
-			# Prevent duplicates
-			sig = ''.join(board)
-			if not sig in tracker:
-				tracker.add(sig)	
-				all_boards.append(board)
-			return
-	# For all cells...
-	for index in xrange(9):
-		if not board[index]: # test that the cell is still open
-			# Recurse to explore taking this turn
-			play(board, all_boards, tracker, not xs_turn, index)
+    """
+    board: array of length 9 representing the board in order from from top left to lower right, i.e. board[0] is top left, board[3] is the first column from the left of the second row from the top, board[8] is the lower right corner.
+    xs_turn: boolean True if it's player x turn
+    all_boards: list of lists
+    tracker: set
+    """
+    # On initialization, no one takes a turn. This lets us explore all 9 choices for x's first turn.
+    if next_index >= 0:
+        board = list(board)
+        board[next_index] = 'x' if xs_turn else 'o'
+        if _end_game(board):
+            # Prevent duplicates
+            sig = ''.join(board)
+            if not sig in tracker:
+                tracker.add(sig)    
+                all_boards.append(board)
+            return
+    # For all cells...
+    for index in xrange(9):
+        if not board[index]: # test that the cell is still open
+            # Recurse to explore taking this turn
+            play(board, all_boards, tracker, not xs_turn, index)
 
 def start_playing():
-	board = ['',]*9
-	all_boards = []
-	play(board, all_boards, set())
-	print 'Total end states: {}'.format(len(all_boards))
-	for x in xrange(min(len(all_boards),100)):
-		_print_board(all_boards[x])
-		print
+    board = ['',]*9
+    all_boards = []
+    play(board, all_boards, set())
+    print 'Total end states: {}'.format(len(all_boards))
+    for x in xrange(min(len(all_boards),100)):
+        _print_board(all_boards[x])
+        print
 
 if __name__ == '__main__':
-	start_playing()
+    start_playing()
 
 

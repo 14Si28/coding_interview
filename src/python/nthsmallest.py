@@ -24,7 +24,7 @@ def nthsmallest_select(values, n):
     Reference: Introduction to Algorithms section 9.2
     """
     def partition(start, end):
-    	# print values # Uncomment to watch the divide and conquer
+        # print values # Uncomment to watch the divide and conquer
         pivot = values[end]
         i = start - 1
         for j in xrange(start, end):  # end is exclusive, i.e. end will not be included in the range
