@@ -31,9 +31,10 @@ def build_indexes():
     for row in csv_rows('data_availability.txt'):
         # [availability_id,place_id,start_date,end_date,price_per_night]
         av_id = row[0]
+        place_id = row[1]
         availability[av_id] = row
-        avail_start_dates.append((parse_date(row[2]),av_id))
-        avail_end_dates.append((parse_date(row[3]),av_id))
+        avail_start_dates.append((parse_date(row[2]), av_id, place_id))
+        avail_end_dates.append((parse_date(row[3]), av_id, place_id))
 
     avail_start_dates.sort(key=operator.itemgetter(0))
     avail_end_dates.sort(key=operator.itemgetter(0))
@@ -82,8 +83,8 @@ def available_places(start_date, end_date, avail_start_dates, avail_end_dates):
     end_date_index = binsearch(avail_end_dates, end_date, valfunc=operator.itemgetter(0), select_closest=True)
     if start_date_index == None or end_date_index == None:
         return None
-    start_place_ids = set([x[1] for x in avail_start_dates[0:start_date_index]])
-    end_place_ids = set([x[1] for x in avail_end_dates[end_date_index:]])
+    start_place_ids = set([x[2] for x in avail_start_dates[0:start_date_index]])
+    end_place_ids = set([x[2] for x in avail_end_dates[end_date_index:]])
     assert start_place_ids
     assert end_place_ids
     return start_place_ids.intersection(end_place_ids)
@@ -101,7 +102,9 @@ def search(start_date_str, end_date_str, city_name, price_min=None, price_max=No
 def _test_all():
     place_ids, indexes = search('2012-08-08', '2012-08-16', 'san francisco')
     for place_id in place_ids:
-
+        for x in indexes[IND_AVAILABILITY].itervalues():
+            if x[1] == place_id:
+                print x
 
     # a = sorted([0,1,2,3,4,5,6,7,8])
     # print binsearch(a, 7)
