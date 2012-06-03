@@ -64,6 +64,8 @@ def parse_date(date_str):
 
 def binsearch(sorted_values, target_value, valfunc=None, select_closest=False, start=-1, end=None, closest=None):
     """
+    O(log n).
+
     valfunc: an optional function for extracting the value at sorted_values[index]
     select_closest: when True causes the search to return the closest (inexact) match
 
@@ -99,6 +101,11 @@ def available_places(start_date, end_date, avail_start_dates, avail_end_dates):
     """
     returns: set of place_ids of places available during the specified dates
     """
+    # NOTE: Rather than two binary searches across pre-sorted start/end date lists, 
+    # we could use an interval tree (or segment tree). The canonical implementation described
+    # in Introduction to Algorithms by Cormen uses a modified red black tree.
+    # That's more complex than warranted for this example.
+    
     start_date_index = binsearch(avail_start_dates, start_date, valfunc=operator.itemgetter(0), select_closest=True)
     
     if start_date_index == None:
@@ -111,9 +118,10 @@ def available_places(start_date, end_date, avail_start_dates, avail_end_dates):
 
     start_place_ids = set([x[2] for x in avail_start_dates[0:start_date_index]])
     end_place_ids = set([x[2] for x in avail_end_dates[end_date_index:]])
-    
+
     assert start_place_ids
     assert end_place_ids
+    # Set intersection time complexity O(min(len(s), len(t)))  http://wiki.python.org/moin/TimeComplexity
     return start_place_ids.intersection(end_place_ids)
 
 def availability_extract(place_ids, start_date, end_date, place_to_avail_index, availability_index):
