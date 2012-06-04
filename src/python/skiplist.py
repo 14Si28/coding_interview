@@ -70,6 +70,22 @@ def create_base_list(num_nodes):
 
     return first
 
+def find(first_node, target_value):
+    ops_count = 1
+    node = first_node
+    for level in xrange(first_node.level, -1, -1):
+        while node.forward[level] and node.forward[level].value < target_value:
+            ops_count += 1
+            node = node.forward[level]
+
+    if node:
+        node = node.forward[0]
+        ops_count += 1
+        if node and node.value == target_value:
+            return node, ops_count
+
+    return None, ops_count
+
 def print_list(first_node):
     for level in xrange(0,len(first_node.forward)):
         print '____ Level: {} '.format(level)
@@ -79,8 +95,14 @@ def print_list(first_node):
     print ''
 
 def _test_all():
-    first_node = create_base_list(100)
+    num_nodes = 100
+    first_node = create_base_list(num_nodes)
     print_list(first_node)
+
+    for x in xrange(100):
+        target_value = random.randint(0, num_nodes + int(num_nodes*0.05))
+        node, ops_count = find(first_node, target_value)
+        print 'Search for: {}   found: {}   ops: {}'.format(target_value, node, ops_count)
 
 if __name__ == '__main__':
     _test_all()
