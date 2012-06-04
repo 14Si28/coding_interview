@@ -6,31 +6,37 @@ n: 0,1,2,3,4,5,6, 7, 8
 f: 0,1,1,2,3,5,8,13,21,34,55,89,144
 """
 
-def fibonacci_recursive(n):
-    if n <= 1:
-        return [0]
-    return fibonacci_recursive_impl(n-2, [0,1])
-
-def fibonacci_recursive_impl(n, seq):
-    if n <= 0 or len(seq) < 2:
-        return seq
-    x = seq[-1] + seq[-2]
-    seq.append(x)
-    return fibonacci_recursive_impl(n-1, seq)
-
-
-
 def fibonacci_iterative(n):
-    if n <= 1:
+    """
+    returns: a list of n fibonacci numbers
+    """
+    if n <= 0:
         return [0]
     seq = [0,1]
-    for m in xrange(n-2):
+    for m in xrange(n-1):
         x = seq[-1] + seq[-2]
         seq.append(x)
     return seq
 
 
-def fibonacci_sequence(n, k):
+def fibonacci_recursive(n, seq=None):
+    """
+    returns: a list of n fibonacci numbers
+    """
+    if seq == None:
+        if n <= 0:
+            seq = [0]
+        else:
+            seq = [0,1]
+
+    if n <= 1:
+        return seq
+
+    seq.append(seq[-1] + seq[-2])
+    return fibonacci_recursive(n-1, seq)
+
+
+def fibonacci_subsequence(n, k):
     """
     Generate the Fibonacci sequence from n to k inclusive. n and k must be Fibnacci numbers.
     """
@@ -60,8 +66,9 @@ def fibonacci_number(n):
 # Tests
 
 def _fibonacci_check(expected, fib_func):
-    actual = fib_func(len(expected))
-    print 'Expected: {}'.format(', '.join(['{}'.format(x) for x in expected]))
+    n = len(expected)-1
+    actual = fib_func(n)
+    print 'Expected for n={} : {}'.format(n, ', '.join(['{}'.format(x) for x in expected]))
     print 'Actual: {}'.format(', '.join(['{}'.format(x) for x in actual]))
     for pair in zip(expected, actual):
         assert pair[0] == pair[1]
@@ -77,9 +84,9 @@ if __name__ == '__main__':
     _test_fibonacci(fibonacci_recursive)
     _test_fibonacci(fibonacci_iterative)
 
-    assert fibonacci_sequence(8, 21) == [8, 13, 21]
-    assert fibonacci_sequence(2, 13) == [2, 3, 5, 8, 13]
-    assert fibonacci_sequence(0, 34) == [1, 2, 3, 5, 8, 13, 21, 34]
+    assert fibonacci_subsequence(8, 21) == [8, 13, 21]
+    assert fibonacci_subsequence(2, 13) == [2, 3, 5, 8, 13]
+    assert fibonacci_subsequence(0, 34) == [1, 2, 3, 5, 8, 13, 21, 34]
 
     assert fibonacci_number(5) == 3
     assert fibonacci_number(10) == 34
