@@ -61,6 +61,28 @@ def fibonacci_subsequence(n, k):
 
     return seq
 
+def fibonacci_subsequence_by_index(n, k):
+    """
+    Generate the Fibonacci sequence from index n to k inclusive. The index is 0 based. n=0 k=0 returns [0].
+    """
+    if n > k or n < 0 or k < 0:
+        raise ValueError('Invalid range. Must be 0 <= n <= k')
+
+    seq = []
+    if n == 0:
+        seq.append(0)
+    if n == 1 or (n == 0 and k >= 1):
+        seq.append(1)
+
+    prev = [0, 1]
+    for x in xrange(2, k+1):
+        curr = prev[1] + prev[0]
+        prev[0] = prev[1]
+        prev[1] = curr
+        if x >= n:
+            seq.append(curr)
+
+    return seq
 
 def fibonacci_number(n):
     if n <= 0:
@@ -81,26 +103,37 @@ def _fibonacci_check(expected, fib_func):
     assert len(expected) == len(actual)
 
 def _test_fibonacci(fib_func):
+    print '___________ {}'.format(fib_func)
     _fibonacci_check([0,1,1,2,3,5,8], fib_func)
     _fibonacci_check([0,1,1,2,3,5,8,13,21,34,55,89,144], fib_func)
     _fibonacci_check([0], fib_func)
     _fibonacci_check([0,1], fib_func)
 
-def _test_subsequence(n, k, expected):
-    actual = fibonacci_subsequence(n, k)
+def _test_subsequence(func, n, k, expected):
+    actual = func(n, k)
     print 'n={}, k={}  ===> {}'.format(n, k, actual)
     if expected != actual:
         raise Exception('FAIL For n={}, k={} Expected: {}  Actual: {}'.format(n, k, expected, actual))
 
 def _test_all_subsequence():
-    _test_subsequence(0, 1, [0,1, 1])
-    _test_subsequence(0, 0, [0])
-    _test_subsequence(1, 1, [1, 1])
-    _test_subsequence(0, 2, [0,1,1,2])
-    _test_subsequence(1, 3, [1, 1, 2, 3])
-    _test_subsequence(8, 21, [8, 13, 21])
-    _test_subsequence(2, 13, [2, 3, 5, 8, 13])
-    _test_subsequence(0, 34, [0, 1, 1, 2, 3, 5, 8, 13, 21, 34])
+    print '___________ {}'.format(fibonacci_subsequence)
+    _test_subsequence(fibonacci_subsequence, 0, 1, [0,1, 1])
+    _test_subsequence(fibonacci_subsequence, 0, 0, [0])
+    _test_subsequence(fibonacci_subsequence, 1, 1, [1, 1])
+    _test_subsequence(fibonacci_subsequence, 0, 2, [0,1,1,2])
+    _test_subsequence(fibonacci_subsequence, 1, 3, [1, 1, 2, 3])
+    _test_subsequence(fibonacci_subsequence, 8, 21, [8, 13, 21])
+    _test_subsequence(fibonacci_subsequence, 2, 13, [2, 3, 5, 8, 13])
+    _test_subsequence(fibonacci_subsequence, 0, 34, [0, 1, 1, 2, 3, 5, 8, 13, 21, 34])
+
+    print '___________ {}'.format(fibonacci_subsequence_by_index)
+    _test_subsequence(fibonacci_subsequence_by_index , 0, 1, [0,1])
+    _test_subsequence(fibonacci_subsequence_by_index , 0, 0, [0])
+    _test_subsequence(fibonacci_subsequence_by_index , 1, 1, [1])
+    _test_subsequence(fibonacci_subsequence_by_index , 1, 2, [1,1])
+    _test_subsequence(fibonacci_subsequence_by_index , 0, 2, [0,1,1])
+    _test_subsequence(fibonacci_subsequence_by_index , 0, 3, [0,1,1,2])
+    _test_subsequence(fibonacci_subsequence_by_index , 1, 3, [1, 1, 2])
 
 if __name__ == '__main__':
     _test_fibonacci(fibonacci_recursive)
