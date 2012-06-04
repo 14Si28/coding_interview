@@ -2,7 +2,7 @@
 Generate Fibonacci numbers with two different implementations.
 "the first two numbers in the Fibonacci sequence are 0 and 1, and each subsequent number is the sum of the previous two."
 
-n: 0,1,2,3,4,5,6, 7, 8
+n: 0,1,2,3,4,5,6, 7, 8, 9,10,11, 12
 f: 0,1,1,2,3,5,8,13,21,34,55,89,144
 """
 
@@ -40,9 +40,16 @@ def fibonacci_subsequence(n, k):
     """
     Generate the Fibonacci sequence from n to k inclusive. n and k must be Fibnacci numbers.
     """
-    assert k > n
-    # TODO base case
+    if n > k or n < 0 or k < 0:
+        raise ValueError('Invalid range. Must be 0 <= n <= k')
+
     seq = []
+
+    if n <= 0:
+        seq.append(0)
+    if n == 1 or (n == 0 and k >=1):
+        seq.append(1)
+
     prev = [0, 1]
     curr = 0
     while curr < k:
@@ -56,9 +63,9 @@ def fibonacci_subsequence(n, k):
 
 
 def fibonacci_number(n):
-    if n <= 1:
+    if n <= 0:
         return 0
-    if n <= 3:
+    if n <= 2:
         return 1
     return fibonacci_number(n-2) + fibonacci_number(n-1)
 
@@ -68,8 +75,7 @@ def fibonacci_number(n):
 def _fibonacci_check(expected, fib_func):
     n = len(expected)-1
     actual = fib_func(n)
-    print 'Expected for n={} : {}'.format(n, ', '.join(['{}'.format(x) for x in expected]))
-    print 'Actual: {}'.format(', '.join(['{}'.format(x) for x in actual]))
+    print 'n={}  ===> {}'.format(n, actual)
     for pair in zip(expected, actual):
         assert pair[0] == pair[1]
     assert len(expected) == len(actual)
@@ -80,16 +86,30 @@ def _test_fibonacci(fib_func):
     _fibonacci_check([0], fib_func)
     _fibonacci_check([0,1], fib_func)
 
+def _test_subsequence(n, k, expected):
+    actual = fibonacci_subsequence(n, k)
+    print 'n={}, k={}  ===> {}'.format(n, k, actual)
+    if expected != actual:
+        raise Exception('FAIL For n={}, k={} Expected: {}  Actual: {}'.format(n, k, expected, actual))
+
+def _test_all_subsequence():
+    _test_subsequence(0, 1, [0,1, 1])
+    _test_subsequence(0, 0, [0])
+    _test_subsequence(1, 1, [1, 1])
+    _test_subsequence(0, 2, [0,1,1,2])
+    _test_subsequence(1, 3, [1, 1, 2, 3])
+    _test_subsequence(8, 21, [8, 13, 21])
+    _test_subsequence(2, 13, [2, 3, 5, 8, 13])
+    _test_subsequence(0, 34, [0, 1, 1, 2, 3, 5, 8, 13, 21, 34])
+
 if __name__ == '__main__':
     _test_fibonacci(fibonacci_recursive)
     _test_fibonacci(fibonacci_iterative)
 
-    assert fibonacci_subsequence(8, 21) == [8, 13, 21]
-    assert fibonacci_subsequence(2, 13) == [2, 3, 5, 8, 13]
-    assert fibonacci_subsequence(0, 34) == [1, 2, 3, 5, 8, 13, 21, 34]
+    _test_all_subsequence()
 
-    assert fibonacci_number(5) == 3
-    assert fibonacci_number(10) == 34
-    assert fibonacci_number(13) == 144
+    assert fibonacci_number(5) == 5
+    assert fibonacci_number(10) == 55
+    assert fibonacci_number(12) == 144
 
 
