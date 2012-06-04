@@ -105,6 +105,7 @@ def available_places(start_date, end_date, avail_start_dates, avail_end_dates):
     # we could use an interval tree (or segment tree). The canonical implementation described
     # in Introduction to Algorithms by Cormen uses a modified red black tree.
     # That's more complex than warranted for this example.
+    # A better alternative would be to use skip lists.
     
     start_date_index = binsearch(avail_start_dates, start_date, valfunc=operator.itemgetter(0), select_closest=True)
     
