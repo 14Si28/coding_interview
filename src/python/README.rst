@@ -17,6 +17,20 @@ ____________________________________________________________________
 Generate all combinations of a list of choices.
 
 
+`factorial.py <./python/factorial.py>`_
+____________________________________________________________________
+
+Write an algorithm to compute n factorial (n!).
+
+
+`factorialzeros.py <./python/factorialzeros.py>`_
+____________________________________________________________________
+
+Write an algorithm that calculates the total number of zeros in n factorial (n!).
+
+Variant: count only the trailing zeros.
+
+
 `fibonacci.py <./python/fibonacci.py>`_
 ____________________________________________________________________
 
@@ -93,7 +107,7 @@ Return::
     [3, 8]
 
 This problem is a simplified presentation of word level inverted indexes. 
-You don't need to know inverted indexes or document classification to solve this problem.
+You don't need to know inverted indexes or how to merge posting lists to solve this problem.
 For more background, you can also search for:
 * Word postings and posting lists
 * Term frequency inverse document frequency tf*idf. 
@@ -268,6 +282,12 @@ ____________________________________________________________________
 Implement a fair randomized shuffling algorithm for a deck of cards.
 
 
+`skiplist.py <./python/skiplist.py>`_
+____________________________________________________________________
+
+Illustrate a skip list search.
+
+
 `sortrgb.py <./python/sortrgb.py>`_
 ____________________________________________________________________
 
@@ -339,6 +359,12 @@ find the lowest level common ancestor of two target values.
 ____________________________________________________________________
 
 Illustrate a breadth first search in a binary tree.
+
+
+`treebinarysearch.py <./python/treebinarysearch.py>`_
+____________________________________________________________________
+
+Illustrate binary search.
 
 
 `treeserialize.py <./python/treeserialize.py>`_
