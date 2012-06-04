@@ -8,6 +8,9 @@ import random
 # http://en.wikipedia.org/wiki/Skip_list
 
 class Node(object):
+    """
+    A skip list node.
+    """
     MAX_LEVEL = 2   # 0 based
     def __init__(self, value=None, first=False):
         self.value = value
@@ -48,6 +51,7 @@ class Node(object):
 def create_base_list(num_nodes):
 
     first = Node(value=0, first=True)
+    # Track the previous node for each level.
     previous_nodes = [first,] * (Node.MAX_LEVEL + 1)
 
     node = first
@@ -58,6 +62,7 @@ def create_base_list(num_nodes):
         if node.level > 0:
             prev = previous_nodes[node.level]
             if prev:
+                # Stitch together nodes with the same level.
                 prev.forward[node.level] = node
                 #print 'Skip {}  ==> {}   @ level {}'.format(prev, node, node.level)
 
