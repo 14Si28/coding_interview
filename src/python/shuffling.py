@@ -2,6 +2,13 @@
 Implement a fair randomized shuffling algorithm for a deck of cards.
 """
 
+# Regarding how to test if the shuffling is fair (test randomness), refer to:
+# http://en.wikipedia.org/wiki/Entropy_(computing)
+# http://csrc.nist.gov/groups/ST/toolkit/rng/index.html
+# http://en.wikipedia.org/wiki/Randomness_test
+# http://en.wikipedia.org/wiki/Diehard_tests
+# 
+
 import random
 
 def shuffle_cheat(cards):

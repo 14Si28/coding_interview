@@ -3,6 +3,7 @@ Illustrate binary search.
 """
 
 # nodes are [value, left, right]
+# Not balanced:
 TREE1 = [ 8, 
             [5, 
                 [3, None, None], 

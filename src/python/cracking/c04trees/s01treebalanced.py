@@ -27,21 +27,21 @@ def is_balanced2(tree, threshold=1):
 
     return height(tree) != IMBALANCED
 
+# TODO This is incorrect:
+# def is_balanced(tree, threshold=1):
+#     """
+#     O(n^2) time.
+#     """
+#     if not tree:
+#         return True
 
-def is_balanced(tree, threshold=1):
-    """
-    O(n^2) time.
-    """
-    if not tree:
-        return True
+#     def height(node):
+#         if not node:
+#             return 0
 
-    def height(node):
-        if not node:
-            return 0
+#         return 1 + max(height(node[1]), height(node[2]))
 
-        return 1 + max(height(node[1]), height(node[2]))
-
-    return abs(height(tree[1]) - height(tree[2])) <= threshold
+#     return abs(height(tree[1]) - height(tree[2])) <= threshold
 
 
 def _test_all_func(func):
@@ -73,7 +73,7 @@ def _test_all_func(func):
 
 def _test_all():
     _test_all_func(is_balanced2)
-    _test_all_func(is_balanced)
+    # _test_all_func(is_balanced)
 
 
 if __name__ == '__main__':
