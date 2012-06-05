@@ -34,7 +34,7 @@ def calculator(input):
         raise Exception('Invalid input (insufficient operators or operands): {}'.format(input))
     
 
-    def apply(operator, left, right):
+    def applyop(operator, left, right):
         print '({} {} {})'.format(left, operator, right)
         if operator == '+':
             return left + right
@@ -55,7 +55,7 @@ def calculator(input):
             if NUMBER_RE.match(item):
                 stack.append(int(item))
             elif OPERATOR_RE.match(item):
-                stack.append(apply(item, stack.pop(), stack.pop()))
+                stack.append(applyop(item, stack.pop(), stack.pop()))
             else:
                 raise Exception('Invalid item: {}'.format(item))
 
