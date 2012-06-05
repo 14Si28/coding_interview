@@ -7,37 +7,6 @@ Note: in Python use sorted() instead (Timsort).
 """
 import random
 
-def quicksort(values):
-    """
-    Perform a quick sort without modifying the original list.
-
-    Average case O(n log n). Memory usage O(n).
-    """
-    if len(values) <= 1:
-        return values 
-
-    #print values # Uncomment this to see the divide and conquer progression.
-
-    left = []
-    right = []
-    # Naive pivot selection.
-    pivot_ind = int(len(values) / 2) 
-    pivot = values[pivot_ind]
-    pivot_list = []
-
-    for ind in range(0, len(values)):
-        x = values[ind]
-        if x < pivot:
-            left.append(x)
-        elif x > pivot:
-            right.append(x)
-        else:
-            assert x == pivot
-            pivot_list.append(x)
-
-    return quicksort(left) + pivot_list + quicksort(right)
-
-
 def quicksort_in_place(values):
     """
     O(n log n) with constant additional memory. (Other than the recursion stacks!)
@@ -111,6 +80,36 @@ def quicksort_in_place_random(values):
     qs(0, len(values)-1)
     return values
 
+def quicksort_copy(values):
+    """
+    Perform a quick sort without modifying the original list.
+
+    Average case O(n log n). Memory usage O(n).
+    """
+    if len(values) <= 1:
+        return values 
+
+    #print values # Uncomment this to see the divide and conquer progression.
+
+    left = []
+    right = []
+    # Naive pivot selection.
+    pivot_ind = int(len(values) / 2) 
+    pivot = values[pivot_ind]
+    pivot_list = []
+
+    for ind in range(0, len(values)):
+        x = values[ind]
+        if x < pivot:
+            left.append(x)
+        elif x > pivot:
+            right.append(x)
+        else:
+            assert x == pivot
+            pivot_list.append(x)
+
+    return quicksort_copy(left) + pivot_list + quicksort_copy(right)
+
 def _test(func, input):
     expected = sorted(input)
     actual = func(input)
@@ -130,7 +129,7 @@ def _test_all(func):
     _test(func, [0, 3, 2, 1, 4, 5, 7, 6, 8]*3)
 
 if __name__ == '__main__':
-    _test_all(quicksort)
+    _test_all(quicksort_copy)
     _test_all(quicksort_in_place)
     _test_all(quicksort_in_place_random)
 
