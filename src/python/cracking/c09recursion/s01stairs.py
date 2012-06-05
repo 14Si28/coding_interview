@@ -32,7 +32,7 @@ def _test_one(func, input, expected):
     if actual != expected:
         raise Exception('FAIL expected {}  actual {} '.format(expected, actual))
 
-def _test_all(func):
+def _test_all_func(func):
     _test_one(func, 0, 0)
     _test_one(func, 1, 1)
     _test_one(func, 2, 1)
@@ -49,8 +49,13 @@ def _test_all(func):
     _test_one(func, 13, 927)
     _test_one(func, 14, 1705)
 
+def _test_all():
+    _test_all_func(countways)
+    _test_all_func(countways2)
+
 if __name__ == '__main__':
-    _test_all(countways)
-    _test_all(countways2)
+    _test_all()
+    
+
 
 

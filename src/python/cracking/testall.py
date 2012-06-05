@@ -13,6 +13,11 @@ from cracking.c02linkedlists import s03deletenode
 from cracking.c02linkedlists import s04adder
 from cracking.c02linkedlists import s05detectcycle
 from cracking.c03stacks import s04towersofhanoi
+from cracking.c04trees import s01treebalanced
+from cracking.c04trees import s08subtree
+from cracking.c07maths import s04division
+from cracking.c09recursion import s01stairs
+from cracking.c10sorting import s06findinmatrix
 
 
 
@@ -60,4 +65,23 @@ class Testc02linkedlists(unittest.TestCase):
 class Testc03stacks(unittest.TestCase):
     def test_s04towersofhanoi(self):
         s04towersofhanoi._test_all()
+
+class Testc04trees(unittest.TestCase):
+    def test_s01treebalanced(self):
+        s01treebalanced._test_all()
+
+    def test_s08subtree(self):
+        s08subtree._test_all()
+
+class Testc07maths(unittest.TestCase):
+    def test_s04division(self):
+        s04division._test_all()
+
+class Testc09recursion(unittest.TestCase):
+    def test_s01stairs(self):
+        s01stairs._test_all()
+
+class Testc10sorting(unittest.TestCase):
+    def test_s06findinmatrix(self):
+        s06findinmatrix._test_all()
 

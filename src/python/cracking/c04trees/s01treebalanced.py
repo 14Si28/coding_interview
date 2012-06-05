@@ -44,7 +44,7 @@ def is_balanced(tree, threshold=1):
     return abs(height(tree[1]) - height(tree[2])) <= threshold
 
 
-def _test_all(func):
+def _test_all_func(func):
     tree2 = (8, 
                 (3, (1, None, None), 
                     (6, 
@@ -71,7 +71,11 @@ def _test_all(func):
             )
     assert not func(tree1)
 
+def _test_all():
+    _test_all_func(is_balanced2)
+    _test_all_func(is_balanced)
+
+
 if __name__ == '__main__':
-    _test_all(is_balanced2)
-    _test_all(is_balanced)
+    _test_all()
 
