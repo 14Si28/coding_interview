@@ -36,7 +36,9 @@ ____________________________________________________________________
 
 Generate Fibonacci numbers with two different implementations.
 "the first two numbers in the Fibonacci sequence are 0 and 1, and each subsequent number is the sum of the previous two."
-0,1,1,2,3,5,8,13,21,34,55,89,144
+
+n: 0,1,2,3,4,5,6, 7, 8, 9,10,11, 12
+f: 0,1,1,2,3,5,8,13,21,34,55,89,144
 
 
 `fifoqueue.py <./python/fifoqueue.py>`_
@@ -222,6 +224,8 @@ ____________________________________________________________________
 
 Implement a calculator for prefix notation (Polish notation).
 
+Note: in the below examples, the leading star \* is escaped with a slash per rst docstring format.
+
 Examples:
 + 3 5
 performs: 3 + 5
@@ -231,7 +235,7 @@ result: 8
 performs: (1 + 1) * 4
 result: 8
 
-/ \* 1 + 2 6 4
+/ * 1 + 2 6 4
 performs: (1 * ( 2 + 6 )) / 4
 result: 2
 
