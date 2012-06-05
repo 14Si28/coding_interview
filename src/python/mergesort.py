@@ -1,7 +1,7 @@
 """
 Merge sort.
 
-O(n log n), stable.
+Worst case time O(n log n). Worst case space O(n). Stable.
 """
 import random
 
