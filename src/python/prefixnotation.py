@@ -1,6 +1,8 @@
 """
 Implement a calculator for prefix notation (Polish notation).
 
+Note: in the below examples, the leading star \* is escaped with a slash per rst docstring format.
+
 Examples:
 + 3 5
 performs: 3 + 5
@@ -10,7 +12,7 @@ result: 8
 performs: (1 + 1) * 4
 result: 8
 
-/ \* 1 + 2 6 4
+/ * 1 + 2 6 4
 performs: (1 * ( 2 + 6 )) / 4
 result: 2
 """
