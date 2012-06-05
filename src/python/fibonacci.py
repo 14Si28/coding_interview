@@ -18,7 +18,6 @@ def fibonacci_iterative(n):
         seq.append(x)
     return seq
 
-
 def fibonacci_recursive(n, seq=None):
     """
     returns: a list of n fibonacci numbers
@@ -84,12 +83,29 @@ def fibonacci_subsequence_by_index(n, k):
 
     return seq
 
-def fibonacci_number(n):
+def fibonacci_number_recursive(n):
     if n <= 0:
         return 0
     if n <= 2:
         return 1
-    return fibonacci_number(n-2) + fibonacci_number(n-1)
+    return fibonacci_number_recursive(n-2) + fibonacci_number_recursive(n-1)
+
+def fibonacci_number_iterative(n):
+    """
+    n:          0,1,2,3,4,5
+    returns:    0,1,1,2,3,5
+    """
+    if n <= 0:
+        return 0
+
+    prev = [0, 1]
+    for x in xrange(1, n): 
+        curr = prev[1] + prev[0]
+        prev[0] = prev[1]
+        prev[1] = curr
+
+    return prev[1]
+
 
 #################################################
 # Tests
@@ -135,14 +151,29 @@ def _test_all_subsequence():
     _test_subsequence(fibonacci_subsequence_by_index , 0, 3, [0,1,1,2])
     _test_subsequence(fibonacci_subsequence_by_index , 1, 3, [1, 1, 2])
 
+def _test_fibnum(func, n, expected):
+    actual = func(n)
+    print '{} ==> {}'.format(n, actual)
+    if expected != actual:
+        raise Exception('FAIL Expected {} Actual {}'.format(expected, actual))
+
+def _test_fibnum_all(func):
+    print '___________ {}'.format(func)
+    _test_fibnum(func, 0, 0)
+    _test_fibnum(func, 1, 1)
+    _test_fibnum(func, 2, 1)
+    _test_fibnum(func, 3, 2)
+    _test_fibnum(func, 5, 5)
+    _test_fibnum(func, 10, 55)
+    _test_fibnum(func, 12, 144)
+
 if __name__ == '__main__':
     _test_fibonacci(fibonacci_recursive)
     _test_fibonacci(fibonacci_iterative)
 
     _test_all_subsequence()
 
-    assert fibonacci_number(5) == 5
-    assert fibonacci_number(10) == 55
-    assert fibonacci_number(12) == 144
+    _test_fibnum_all(fibonacci_number_recursive)
+    _test_fibnum_all(fibonacci_number_iterative)
 
 
