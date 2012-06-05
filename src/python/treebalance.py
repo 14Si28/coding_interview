@@ -6,6 +6,9 @@ The array is sorted in ascending order.
 # We represent nodes as lists: [value, left, right]
 
 def create_bst(values):
+    """
+    O(n) time complexity.
+    """
     if not values:
         return None
 
