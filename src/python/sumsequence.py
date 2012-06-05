@@ -37,6 +37,9 @@ class TestSumSequence(unittest.TestCase):
     def test_positive_and_negative(self):
         self.assertEquals(8, sumsequence([-10, 1, 2, 5, -3]))
 
+    def test_positive_and_negative_interspersed(self):
+        self.assertEquals(6, sumsequence([-10, 1, -2, 2, 3, 1, -3]))
+
     def test_positive(self):
         self.assertEquals(8, sumsequence([1, 2, 5]))
 
@@ -50,7 +53,7 @@ class TestSumSequence(unittest.TestCase):
         self.assertEquals(-8, sumsequence([-8]))
 
     def test_negative(self):
-        self.assertEquals(-8, sumsequence([-1, -2, -5]))
+        self.assertEquals(-5, sumsequence([-1, -2, -5]))
 
 
 if __name__ == '__main__':
