@@ -359,6 +359,13 @@ Given a binary search tree with integer values sorted from lowest to highest (le
 find the lowest level common ancestor of two target values.
 
 
+`treebalance.py <./python/treebalance.py>`_
+____________________________________________________________________
+
+Convert a sorted array to a balanced binary search tree (BST).
+The array is sorted in ascending order.
+
+
 `treebfs.py <./python/treebfs.py>`_
 ____________________________________________________________________
 
