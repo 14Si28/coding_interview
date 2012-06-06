@@ -7,9 +7,16 @@ import datetime
 import unittest
 import StringIO
 
-IPV4_ADDRESS_RE = re.compile(r'(([0-9]){1,3}\.){3}([0-9]){1,3}')
-# IPV6_ADDRESS_RE # TODO
 TIMESTAMP_RE = re.compile(r'[0-9]{1,2}/[a-zA-Z]+/[0-9]{4}')
+# ipv4 address: 127.0.0.1
+IPV4_ADDRESS_RE = re.compile(r'(([0-9]){1,3}\.){3}([0-9]){1,3}')
+# ipv6 address examples: 
+# Full:                         2001:0db8:85a3:0000:0000:8a2e:0370:7334
+# 0's collapsed to ::           2001:db8:85a3::8a2e:370:7334
+# ipv4 address as ipv6:         ::ffff:192.0.2.128
+# localhost is:                 ::1 
+# TODO Handle ipv6 addresses. Note that the regexp becomes nasty to handle all cases.
+#IPV6_ADDRESS_RE = re.compile(r'([a-fA-F0-9]):......')
 
 def _parse_time(timestr):
     """
