@@ -14,17 +14,17 @@ class Queue(object):
         self._end = 0 
 
     def enqueue(self, value):
-        if self._start == self._circular_index(self._end+1):
+        if self._start == self._circular_index(self._end):
             self._grow()            
 
         self._data[self._end] = value
-        self._end = self._circular_index(self._end+1)
+        self._end = self._circular_index(self._end)
 
     def dequeue(self):
         if self.is_empty():
             return None
         value = self._data[self._start]
-        self._start = self._circular_index(self._start+1)
+        self._start = self._circular_index(self._start)
         return value
 
     def is_empty(self):
@@ -36,7 +36,9 @@ class Queue(object):
 
         return len(self._data) - self._start + self._end
 
-    def _circular_index(self, index):
+    def _circular_index(self, index, direction=1):
+        assert abs(direction) == 1
+        index += direction
         if index >= len(self._data):
             return 0
         elif index < 0:
