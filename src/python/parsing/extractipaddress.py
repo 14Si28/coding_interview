@@ -7,6 +7,7 @@ import datetime
 import unittest
 import StringIO
 
+DATE_FORMAT = '%d/%b/%Y' # 12/May/2012
 TIMESTAMP_RE = re.compile(r'[0-9]{1,2}/[a-zA-Z]+/[0-9]{4}')
 # ipv4 address: 127.0.0.1
 IPV4_ADDRESS_RE = re.compile(r'(([0-9]){1,3}\.){3}([0-9]){1,3}')
@@ -18,47 +19,22 @@ IPV4_ADDRESS_RE = re.compile(r'(([0-9]){1,3}\.){3}([0-9]){1,3}')
 # TODO Handle ipv6 addresses. Note that the regexp becomes nasty to handle all cases.
 #IPV6_ADDRESS_RE = re.compile(r'([a-fA-F0-9]):......')
 
-def _parse_time(timestr):
-    """
-    timestr: format 12/May/2012
-
-    returns: a datetime for timestr
-    """
-    try:
-        return datetime.datetime.strptime(timestr, '%d/%b/%Y')
-    except Exception as ex:
-        # TODO Logging of original exception (and trace)
-        raise Exception('Failed to parse timestamp: {}   Cause: {}'.format(timestr, ex))
-
-def _extract_ip_address(line):
-    if not line:
-        return None
-
-    ip_address = None
-    match = re.search(IPV4_ADDRESS_RE, line)
+def _extract_match(regex, line):
+    match = re.search(regex, line)
     if match:
-        ip_address = match.group(0)
+        return match.group(0)
 
-    return ip_address
-
-def _extract_date(line):
-    if not line:
-        return None
-
-    when = None
-    match = re.search(TIMESTAMP_RE, line)
-    if match:
-        when = _parse_time(match.group(0))
-
-    return when
+    return None
 
 def parse_log(logstream):
     ip_data = {}
     for line in logstream:
-        ip = _extract_ip_address(line)
+        ip = _extract_match(IPV4_ADDRESS_RE, line)
         if ip:
-            when = _extract_date(line)
-            ip_data.setdefault(when, set()).add(ip)
+            dt = _extract_match(TIMESTAMP_RE, line)
+            if dt:
+                dt = datetime.datetime.strptime(dt, DATE_FORMAT)
+                ip_data.setdefault(dt, set()).add(ip)
 
     return ip_data
 
@@ -96,14 +72,8 @@ def str_stream(thestr):
 
 class TestAuxiliaryParsers(unittest.TestCase):
     def test_extract_date(self):
-        actual = _extract_date('127.0.0.1 - - [12/May/2012:22:53:09 -0700] "GET / HTTP/1.1"')
-        self.assertEqual(TEST_DATE_MAY12, actual)
-
-    def test_parse_time(self):
-        self.assertEqual(TEST_DATE_MAY12, _parse_time('12/May/2012'))
-        self.assertEqual(datetime.datetime(2001, 1, 1, 0, 0), _parse_time('1/Jan/2001'))
-        self.assertEqual(datetime.datetime(2001, 1, 1, 0, 0), _parse_time('01/Jan/2001'))
-        self.assertEqual(datetime.datetime(2024, 12, 31, 0, 0), _parse_time('31/Dec/2024'))
+        actual = _extract_match(TIMESTAMP_RE, '127.0.0.1 - - [12/May/2012:22:53:09 -0700] "GET / HTTP/1.1"')
+        self.assertEqual(TEST_DATE_MAY12.strftime(DATE_FORMAT), actual)
 
 class TestIPParser(unittest.TestCase):
     def test_parse_short1(self):
