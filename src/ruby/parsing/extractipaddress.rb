@@ -69,7 +69,7 @@ EXPECTED_REPEATED_ADDR = {
     TEST_DATE_MAY12 => Set.new(%w(38.32.1.99  33.32.31.1))
 }
 
-class AuxiliaryParsersTest < Test::Unit::TestCase
+class LogParserTest < Test::Unit::TestCase
   def setup
     @parser = LogParser.new
   end
